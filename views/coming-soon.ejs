@@ -1,0 +1,49 @@
+<%- include('partials/header-nav.ejs') %> 
+
+<div class="search-movie-mobile">
+  <form class="d-flex " action="/movies/search-movie" method="post">
+    <input class="search-cinema" type="search" name="search_location" placeholder="  Search movies Here . . ." aria-label="Search">
+    <button type="submit">
+      <i class="fas fa-search fa-2x"></i>
+    </button>
+  </form>
+</div>
+<div class="header-movies-page" >
+  <div class="body">
+    <img src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIxIDEgNTExLjk5OTk4IDUxMS45OTk5OCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJtNTEyIDI1NmMwIDE0MS4zODY3MTktMTE0LjYxMzI4MSAyNTYtMjU2IDI1NnMtMjU2LTExNC42MTMyODEtMjU2LTI1NiAxMTQuNjEzMjgxLTI1NiAyNTYtMjU2IDI1NiAxMTQuNjEzMjgxIDI1NiAyNTZ6bTAgMCIgZmlsbD0iI2ZmNzU5MSIvPjxwYXRoIGQ9Im0yMzIuNDkyMTg4IDQzMC42MDU0NjloNDcuMDE5NTMxdjYxLjEyNWgtNDcuMDE5NTMxem0wIDAiIGZpbGw9IiMzYjNiM2IiLz48cGF0aCBkPSJtNTAzLjgzMjAzMSA4Ni42OTUzMTJ2MjMzLjY3OTY4OGMtNC45MTAxNTYgMTkuMDE1NjI1LTExLjk3MjY1NiAzNy4xNjc5NjktMjAuODk4NDM3IDU0LjE5OTIxOS04LjMxNjQwNiAxNS45MDIzNDMtMTguMjY1NjI1IDMwLjgyNDIxOS0yOS42MTMyODIgNDQuNTM1MTU2LTYuMDU4NTkzIDcuMzI0MjE5LTEyLjUxNTYyNCAxNC4zMDQ2ODctMTkuMzM5ODQzIDIwLjg5NDUzMWgtMzU1Ljk1MzEyNWMtNi44MjQyMTktNi41ODk4NDQtMTMuMjgxMjUtMTMuNTcwMzEyLTE5LjM0Mzc1LTIwLjg5NDUzMS0xMS4zNDc2NTYtMTMuNzEwOTM3LTIxLjI5Mjk2OS0yOC42MzI4MTMtMjkuNjEzMjgyLTQ0LjUzNTE1Ni04LjkyMTg3NC0xNy4wMzEyNS0xNS45ODQzNzQtMzUuMTgzNTk0LTIwLjg5NDUzMS01NC4xOTkyMTl2LTIzMy42Nzk2ODhjMC0xMC4wMTE3MTggOC4xMTcxODgtMTguMTI4OTA2IDE4LjEyODkwNy0xOC4xMjg5MDZoNDU5LjM5NDUzMWMxMC4wMTU2MjUgMCAxOC4xMzI4MTIgOC4xMTcxODggMTguMTMyODEyIDE4LjEyODkwNnptMCAwIiBmaWxsPSIjNGE0YTRhIi8+PHBhdGggZD0ibTQ4Mi45MzM1OTQgODkuNDY0ODQ0djI4NS4xMDkzNzVjLTguMzE2NDA2IDE1LjkwMjM0My0xOC4yNjU2MjUgMzAuODI0MjE5LTI5LjYxMzI4MiA0NC41MzUxNTZoLTM5NC42MzY3MThjLTExLjM0NzY1Ni0xMy43MTA5MzctMjEuMjkyOTY5LTI4LjYzMjgxMy0yOS42MTMyODItNDQuNTM1MTU2di0yODUuMTA5Mzc1em0wIDAiIGZpbGw9IiNmZmQ4NjEiLz48cGF0aCBkPSJtMzczLjg4NjcxOSA0ODMuMjk2ODc1Yy0zNS4yODUxNTcgMTguMzM1OTM3LTc1LjM2NzE4OCAyOC43MDMxMjUtMTE3Ljg4MjgxMyAyOC43MDMxMjUtNDIuNTE5NTMxIDAtODIuNjAxNTYyLTEwLjM2NzE4OC0xMTcuODg2NzE4LTI4LjcwMzEyNSAyOC40NTMxMjQtNS4zOTQ1MzEgNzAuNzE4NzUtOC44MDg1OTQgMTE3Ljg4NjcxOC04LjgwODU5NCA0Ny4xNzU3ODIgMCA4OS40MzM1OTQgMy40MTQwNjMgMTE3Ljg4MjgxMyA4LjgwODU5NHptMCAwIiBmaWxsPSIjNGE0YTRhIi8+PHBhdGggZD0ibTMwLjc5Njg3NSAxNjUuMDM1MTU2IDMyOC43NS0xNjUuMDE5NTMxIDI2Ljg2NzE4NyA1My41MjczNDQtMzI4Ljc1IDE2NS4wMTk1MzF6bTAgMCIgZmlsbD0iIzNiM2IzYiIvPjxwYXRoIGQ9Im00ODEuMTk5MjE5IDMzOS4zMjAzMTItMjUzLjkyOTY4OCA3OS43ODkwNjNoLTEwNi41ODk4NDNsLTUyLjQwMjM0NC0xNjYuODAwNzgxIDM1MC45Mjk2ODctMTEwLjI2NTYyNXptMCAwIiBmaWxsPSIjM2IzYjNiIi8+PGcgZmlsbD0iI2VmZWZlZiI+PHBhdGggZD0ibTI2MC4wODIwMzEgNDkuOTM3NSA1My45NDUzMTMtMjcuMDgyMDMxIDU4LjkwNjI1IDM3LjQ0NTMxMi01My45NDkyMTkgMjcuMDgyMDMxem0wIDAiLz48cGF0aCBkPSJtMTUyLjE4NzUgMTA0LjA5NzY1NiA1My45NDUzMTItMjcuMDgyMDMxIDU4LjkwNjI1IDM3LjQ0OTIxOS01My45NDkyMTggMjcuMDgyMDMxem0wIDAiLz48cGF0aCBkPSJtNDQuMjkyOTY5IDE1OC4yNjE3MTkgNTMuOTQ5MjE5LTI3LjA4MjAzMSA1OC45MDIzNDMgMzcuNDQ5MjE4LTUzLjk0OTIxOSAyNy4wODIwMzJ6bTAgMCIvPjxwYXRoIGQ9Im01Ny42NzU3ODEgMjE4LjU1ODU5NCAzNTAuOTMzNTk0LTExMC4yODEyNSAxNy45NTcwMzEgNTcuMTM2NzE4LTM1MC45MzM1OTQgMTEwLjI4NTE1N3ptMCAwIi8+PC9nPjxwYXRoIGQ9Im0zMjAuMzc4OTA2IDE5OC44MDA3ODEgNTcuNTg1OTM4LTE4LjA5NzY1NiAxNi4yMzgyODEtNjcuODgyODEzLTU3LjU4NTkzNyAxOC4wOTM3NXptMCAwIiBmaWxsPSIjM2IzYjNiIi8+PHBhdGggZD0ibTIwNS4yMDMxMjUgMjM0Ljk4ODI4MSA1Ny41ODU5MzctMTguMDkzNzUgMTYuMjQyMTg4LTY3Ljg4NjcxOS01Ny41ODk4NDQgMTguMDk3NjU3em0wIDAiIGZpbGw9IiMzYjNiM2IiLz48cGF0aCBkPSJtOTAuMDMxMjUgMjcxLjE3NTc4MSA1Ny41ODU5MzgtMTguMDkzNzUgMTYuMjM4MjgxLTY3Ljg4MjgxMi01Ny41ODU5MzggMTguMDkzNzV6bTAgMCIgZmlsbD0iIzNiM2IzYiIvPjxwYXRoIGQ9Im0xMjIuNDQ5MjE5IDMxMS40MTAxNTYgMTU3LjQ2ODc1LTQ5LjQ4ODI4MSA1LjY1NjI1IDE3Ljk5NjA5NC0xNTcuNDY4NzUgNDkuNDg4Mjgxem0wIDAiIGZpbGw9IiNlZmVmZWYiLz48cGF0aCBkPSJtMTM2Ljg3MTA5NCAzNTcuMzAwNzgxIDIzMy4wNTQ2ODctNzMuMjQyMTg3IDUuNjU2MjUgMTgtMjMzLjA1NDY4NyA3My4yMzgyODF6bTAgMCIgZmlsbD0iI2VmZWZlZiIvPjwvc3ZnPg==" />
+    <span class="movies-text">Movies</span><br>
+    <span class="nowshowing-text">Coming Soon</span> 
+   </div>
+ </div>
+<div class="container movies">
+    <!--  GRID CARD MOVIES Coming Soon -->
+    <div  id="page-comingsoon">
+      <div class="album py-5 ">
+        <div class="container movie-cards">
+          <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-4 ">
+            <% allmovies_coming.forEach(function(allmovies_coming){ %>
+            <div class="col">
+              <div class="card">
+                <img src="<%= allmovies_coming.image %>" class="card-img-top">
+  
+                  <div class="card-body">
+                    <a href="/Movies/Movie-Showtime">
+                      <i class="fas fa-play play-btn" data-toggle="tooltip" data-placement="bottom" title="Play Trailer" ></i>
+                    </a>
+                    <h6 class="card-title"><%= allmovies_coming.name %></h6>
+                    <!-- <span class="movie-info"><i class="fas fa-star"></i> 9 / 10 </span> -->
+                  </div> 
+              
+              </div>
+            </div>
+            <% }) %>
+          </div>
+        </div>
+        
+      
+    </div>
+</div>
+</div>
+
+
+<%- include('partials/footer.ejs') %> 

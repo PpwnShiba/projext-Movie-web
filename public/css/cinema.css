@@ -1,0 +1,121 @@
+.cinema-page{
+    font-family: 'Prompt';
+}
+.header-cinema{
+    text-align: center;
+    font-size: 100px;
+    color: white;
+    position: relative;
+    top: -250px;
+}
+.header-cinema .fa-chevron-circle-down{
+    transition: transform 250ms;
+    color: white;
+}
+.header-cinema .fa-chevron-circle-down:hover{
+    transform: translateY(20px);
+}
+.menu-cinemabar{
+    position: relative;
+    top: -120px;
+}
+.menu-cinemabar a{
+    color:#999;
+}
+.menu-cinemabar a:hover{
+    color:#008B8B;
+}
+.content {
+    text-align: center;
+    position: relative;
+    top: -100px;
+}
+.content .search-cinema{
+    border-radius: 5px;
+    border: #008B8B 2px solid;
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    height: 50px;
+    width: 600px;
+    color: #008B8B;
+    padding-left: 20px;
+}
+.fa-search{
+    color: #008B8B; 
+}
+.content button{
+    background-color: white;
+    border: none;
+    position: relative;
+    top: 5px
+}
+
+/*-------- all loacation -----------*/
+
+.eachlocation nav{
+    background: #fff;
+    width: 100%;
+    line-height: 40px;
+    padding: 8px 25px;
+
+}
+.eachlocation nav label{
+    color:#999;
+    font-size: 22px;
+    font-weight: 500;
+    display: block;
+    cursor: pointer;
+}
+.eachlocation .button span{
+    line-height: 40px;
+    transition: 0.5s;
+}
+.eachlocation .button span.rotate{
+    transform: rotate(-180deg);
+  }
+.eachlocation .button{
+    cursor: pointer;
+}
+.eachlocation nav ul{
+    background: #1b1b1b;
+    list-style: none;
+    width: 100%;
+    border-radius: 5px;
+    display: none;
+}
+
+[id^=btn]:checked + ul{
+    display: block;
+}
+.eachlocation input{
+    display: none;
+}
+.eachlocation ul a{
+    text-decoration: none;
+    color: #fff;
+}
+/* .eachlocation nav ul li a:hover,
+.eachlocation nav ul li label:hover{
+  color: cyan;
+} */
+
+.cinema-page .content img{
+    width: 200px;
+    height: 200px;
+}
+.cinema-page .content .each-location{
+    background-color: #dedede;
+    border-radius: 10px;
+    margin-left: 25px;
+}
+.cinema-page .content .headlocation{
+    margin-top: 20px;
+    font-size: 20px;
+}
+.cinema-page .content .headtheater{
+    margin-top: 10px;
+    font-size: 18px;
+}
+.cinema-page .content .each-location:hover{
+    background-color: #4682B4;
+    color: #fff;
+}

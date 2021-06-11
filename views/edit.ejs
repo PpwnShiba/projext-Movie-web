@@ -1,0 +1,59 @@
+<%- include('partials/header-admin.ejs') %> 
+<div class='container'>
+<form action='/admin/<%= allmovies_now._id %>?_method=PUT' method='POST' enctype="multipart/form-data">
+    <div class="mb-3">
+      <label class="form-label">Movie name</label>
+      <input type="text" class="form-control" name='addmov[name]' placeholder='<%= allmovies_now.name %>' value = '<%= allmovies_now.name %>'>
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Poster</label>
+      <img src='<%= allmovies_now.image %>' width = '300px'>
+      <input type="file" class="form-control" name='poster' accept="image/*">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Header</label>
+      <img src='<%= allmovies_now.header %>' width = '300px'>
+      <input type="file" class="form-control" name='header' accept="image/*">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">Score</label>
+      <input type="text" class="form-control" name='addmov[score]' placeholder='<%= allmovies_now.score %>' value = '<%= allmovies_now.score %>'>
+    </div>
+	<div class="mb-3">
+		<label  class="form-label">Genre</label>
+		<input type="text" class="form-control" name='addmov[genre]' placeholder='<%= allmovies_now.genre %>' value = '<%= allmovies_now.genre %>'>
+	</div>
+	<div class="mb-3">
+		<label  class="form-label">time</label>
+		<input type="text" class="form-control" name='addmov[time]' placeholder='<%= allmovies_now.time %>' value = '<%= allmovies_now.time %>'>
+	</div>
+	<div class="mb-3">
+		<label  class="form-label">title</label>
+		<input type="text" class="form-control" name='addmov[title]' placeholder='<%= allmovies_now.title %>' value = '<%= allmovies_now.title %>'>
+	</div>
+  <div class="mb-3">
+		<label  class="form-label">rate</label>
+		<input type="text" class="form-control" name='addmov[rate]' placeholder='<%= allmovies_now.rate %>' value = '<%= allmovies_now.rate %>'>
+	</div>
+  
+  <div class="mb-3">
+		<label  class="form-label">Director</label>
+		<input type="text" class="form-control" name='addmov[Director]' placeholder='<%= allmovies_now.Director %>' value = '<%= allmovies_now.Director %>'>
+	</div>
+  <div class="mb-3">
+		<label  class="form-label">Release Date</label>
+		<input type="text" class="form-control" name='addmov[ReleaseDate]' placeholder='<%= allmovies_now.ReleaseDate %>' value = '<%= allmovies_now.ReleaseDate %>'>
+	</div>
+
+  <div class="mb-3">
+    <label  class="form-label">Video</label>
+    <img src='<%= allmovies_now.Video %>' width = '300px'>
+    <input type="file" class="form-control" name='video' accept="image/*">
+  </div>
+	
+    <button type="submit" class="btn btn-primary">Submit</button>
+    <a href='/collection'>Go back</a>
+  </form>
+</div>
+
+<%- include('partials/footer.ejs') %> 

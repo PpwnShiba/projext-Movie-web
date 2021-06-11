@@ -1,0 +1,124 @@
+ /* ---------------- above select seat ----------*/
+.background{
+  background-color: #28282B;
+  color: white;
+  height: 300px;
+  font-family: 'Poppins';
+  border-radius: 8px;
+}
+.background .content-selectseat{
+  margin-top: 50px;
+}
+
+.img-selectseat .details{
+  border: solid 3px #CD5C5C;
+  color: #CD5C5C;
+  border-radius: 4px;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  padding-left: 25px;
+  padding-right: 25px;
+  position: relative;
+  float: inline-end;
+}
+.img-selectseat .fa-play-circle{
+  color: #CD5C5C;
+  margin-left: 10px;
+  position: relative;
+  top: 5px;
+}
+.img-selectseat img{
+  margin-left: 250px;
+  width: 260px;
+  height: 400px;
+  border-radius: 10px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+
+}
+/* ---------------- above select seat ----------*/
+
+.select-seat{
+  background-color: #28282B;
+  color: white;
+  margin-top: 50px;
+  padding: 100px;
+}
+
+.img-selectseat .container {
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+.img-selectseat .screen{
+  background: #ffffff;
+  height: 100px;
+  width: 100%;
+  margin: 0.8rem 0;
+  transform: rotateX(-45deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.8);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.img-selectseat .row {
+  display: flex;
+  justify-content: center;
+}
+
+.img-selectseat .seat {
+  background-color: #444451;
+  height: 30px;
+  width: 40px;
+  margin: 4px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.img-selectseat .seat.selected{
+  background-color: #5F9EA0;
+}
+.img-selectseat .seat.sold{
+  background-color: #fff;
+}
+
+.showcase {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+.showcase li small {
+  margin-left: 2px;
+}
+
+.seat.occupied {
+  background-color: #fff;
+}
+
+.seat:nth-of-type(2) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 18px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+

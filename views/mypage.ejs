@@ -1,0 +1,207 @@
+<%- include('partials/header-nav.ejs') %> 
+<div class="profile-page">
+    <div class="container">
+        <div class="row align-items-start">
+            <div class="col all-profile">
+          <% if(currentUser) {%>
+                <div class="hi-user">
+                    <h3>Hello, <%= founduser.username %> <i class="far fa-grin-alt"></i></h3>
+                </div>
+                <div class="pic-left">
+                    <img class="img-profile" src="<%= founduser.profile %>" />
+                    <!-- <a href="/user/profile"><button class="btn-profile"></a>
+                    <a href="/user/myfav"><button class="btn-profile-myfav"></button></a> -->
+                    <button type="button" class="btn-edit-pic" data-bs-toggle="modal" data-bs-target="#exampleModal"><h4><i class="fas fa-image"></i>edit picture</h4></button>
+                    <a href="/logout"><button class="btn-logout" type="button"><h4> <i class="fas fa-power-off icon-login"></i>log out</h4></button></a>
+                    <div class=" info-profile">
+                        <h4><i class="fas fa-id-card-alt"></i><b>Username : </b><%= founduser.username %></h4>
+                        <h4 class="name-surename"><i class="fas fa-id-card-alt"></i><b>Name : </b><%= founduser.name %></h4> 
+                        <h4 class="name-surename"><i class="fas fa-id-card-alt"></i><b>Surename : </b><%= founduser.surename %></h4>
+                        <h4><i class="fas fa-envelope"></i><b>Email : </b><%= founduser.email %></h4>
+                    </div>
+                </div>  
+            </div>
+
+            <div class="col right-buttons">
+                <a href="#my-favorite"><button class="btn-fav"><i class="fas fa-heart"></i>my favorite</button></a>
+                <a href="#my-comments"><button class="btn-comments"><i class="fas fa-comment-alt"></i>my comments</button></a>
+                <a href="#my-history"><button class="btn-history"><i class="fas fa-history"></i>history</button></a>
+
+            </div>
+            <div class="myfavorite" >
+                <div class="body">
+                    <span id="my-favorite">My favorite</span>
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                         
+                            <% founduser.myfav.forEach(function(fav){ %>
+                                <div class="swiper-slide">
+                                
+                                  <p><strong> - <%= fav.name %> -</strong></p>  
+                                    <!-- <strong> - <%= fav._id %></strong> -->
+                                  
+                                <% foundmovie.forEach(function(foundmovie){ %>
+                                    <% if(String(foundmovie._id) === String(fav._id) ){ %>
+                                       
+                                        <p><img src="<%= foundmovie.image %>"></p>
+                                        <form id = 'delete-form' action = '/user/delete-favorite/<%= fav._id %>?_method=DELETE' method='POST'>
+                                            <button type='submit' class="btn btn-danger">Remove from favorite</button>
+                                        </form>
+                                   <% } %>
+                                <% }) %>
+                                
+                            </div> 
+                            <% }); %>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                      </div>
+                    </div>
+                    
+            </div>
+            <div class="mycomments">
+                <div class="body">
+                    <span id="my-comments">My comments</span>
+                    
+                    <div class="swiper-container">
+                        <div class="swiper-wrapper">
+                        
+                        <% founduser.comments.forEach(function(comment){ %>
+                          <div class="swiper-slide">
+                            <% foundmovie.forEach(function(foundmovie){ %>
+                                <% if(String(foundmovie._id) === String(comment.movie.id) ){ %>
+                                    <p><%= foundmovie.name %></p>
+                                    <p><img src="<%= foundmovie.image %>" ></p>
+                                    <p> <strong><%= comment.author.username %></strong> - <%= comment.text %>  </p> 
+                                    <p><a href="/movies/<%= foundmovie._id %>/new-comment/<%= comment._id %>/edit-commet"><button class="btn btn-warning" type="button">Edit comment</button></a></p>
+                                    <form id = 'delete-form' action = '/movies/<%= foundmovie._id %>/new-comment/delete-comment/<%= comment._id %>?_method=DELETE' method='POST'>
+                                        <button id="btn-delete" type='submit' class="btn btn-danger">Delete</button>
+                                    </form>
+                                <% } %>
+    
+                            <% }) %>
+
+                          </div>
+                          <% }); %>
+
+            
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
+                      </div>
+                </div>
+                
+            </div>
+            <div class="myhistory">
+                <div class="body">
+                    <span id="my-history">history</span>
+                     
+                    <div class="swiper-container">
+                      <div class="swiper-wrapper">
+                      
+                        <% founduser.reservation.forEach(function(userreserve){ %>
+                        <div class="swiper-slide">
+                          <% foundreserve.forEach(function(reserve){ %>
+                            <% if(String(userreserve._id) === String(reserve._id)){ %>
+                                <% foundmovie.forEach(function(movie){ %>
+                                  <% if(String(movie._id)===String(reserve.movie)){ %>
+                                    <p><%= movie.name %></p>
+                                    <p><img src="<%= movie.image %>" alt=""></p>
+                                  <% } %>
+                                <% }); %>
+                                <p><b> Location :</b> <%= reserve.location %></p>
+                                <p><b> Theater  :</b> <%= reserve.theater %></p>
+                                <p><b> Date     :</b> <%= reserve.date %></p>
+                                <p><b>Bought Time : </b> <%= reserve.boughtTime %></p>
+                                <p><b>Seats : </b> 
+                                <% reserve.seats.forEach(function(seats){ %>
+                                  <%= seats %>
+                                <% }); %>
+                                </p>
+                              <% } %>
+                         
+                            <% }); %>
+                          <% }); %>
+
+                        </div>
+ 
+                      </div>
+                      <!-- Add Pagination -->
+                      <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+          
+            </div>
+            <% } %>
+        </div>
+
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<button >
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit picture</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <form action="/user/edit-picture" method="post" enctype="multipart/form-data">
+      <div class="modal-body">
+        <div class="form-group">
+          <label  class="form-label">Choose your Picture</label>
+          <input type="file" class="form-control" name='picture_profile' accept="image/*">
+          </div>
+      </div>
+   
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+    </form>
+    </div>
+  </div>
+</div>
+
+
+
+<script>
+ var swiper = new Swiper('.swiper-container', {
+      slidesPerView: 1,
+      spaceBetween: 10,
+      // init: false,
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      },
+      breakpoints: {
+        320:{
+          slidesPerView: 1,
+          spaceBetween: 10,
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20,
+        },
+        1024: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
+        1200:{
+          slidesPerView: 4,
+          spaceBetween: 40,
+        }
+      }
+    });
+    
+</script>
+ 
+
+
+<%- include('partials/footer.ejs') %> 

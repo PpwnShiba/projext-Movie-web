@@ -1,0 +1,491 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+.header{
+    /* font-family: 'Prompt'; */
+    color: #333;
+    font-size: 30px;
+    text-align: center;
+    padding-top: 50px;
+}
+.icon{
+    width: 80px;
+    margin-left: 10px;
+    position: relative;
+    top: -20px;
+}
+.movies-page-nowshowing{
+    margin-top: 10px;
+}
+/*---- GRID CARD MOVIES ------*/
+.movies .fa-heart{
+    color: #CD5C5C;
+    margin-right: 2px;
+}
+.movies .addtofav{
+    text-decoration: none;
+    color: #5e5c5c;
+}
+.movies .addtofav:hover{
+    color: #CD5C5C;
+}
+.movies .play-btn{
+    background-color: #ff3d49;
+    position: absolute;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    right: 20px;
+    bottom: 90px;
+    font-size: 24px;
+    padding-left: 20px;
+    padding-top: 15px;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+.movie-info{
+    color: #5e5c5c;
+    float: right;
+
+}
+
+.movies .card{
+    width: 251px;
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+    font-size: small;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+.movie-cards img{
+    height: 400px;
+    width: 250px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.movie-cards .card-body{
+    height: 110px;
+}
+.movie-cards .card-title{
+    width: 70%;
+    height: 40px;
+}
+/*-------- header of movies page -------------*/
+.header-movies-page .body{
+    position: relative;
+  }
+.header-movies-page {
+    font-family: 'poppins';
+    padding-top: 40px;
+    font-size: 30px;
+}
+.header-movies-page .nowshowing-text{
+    font-weight:900;
+}
+.header-movies-page .nowshowing-text, .header-movies-page .movies-text{
+    position: relative;
+    left: 50%;
+    padding-top: 20px;
+}
+
+.header-movies-page .body img{
+    height:100px;
+    right: 51%;
+    position: absolute;
+}
+
+/*----------- SORT TAP--------------*/
+.dropdown-sort{
+    position: relative;
+    float:right;
+    margin-right: 150px;
+    border: #333 solid 3px;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.dropdown-sort:hover{
+    background-color: #333;
+    color: #fff;;
+}
+.dropdown-sort .dropdown-content-sort a{
+    display: block;
+    color: #333;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-decoration: none;
+    text-align: left;
+}
+.dropdown-sort .dropdown-content-sort span{
+    padding-left: 30px;
+}
+.dropdown-sort .dropdown-content-sort .fa-caret-down{
+    padding-left: 10px;
+}
+.dropdown-sort .dropdown-content-sort .fa-angle-right{
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.dropdown-sort .dropdown-content-sort {
+    display: none;
+    position: absolute;
+    width: 250px;
+    top: 37px;
+    background-color: hsl(0, 0%, 98%);
+    color: #333;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-sort .dropdown-content-sort a:hover {
+    background-color: #333;
+    color: #fff;
+} 
+.dropdown-sort:hover .dropdown-content-sort {
+    display: block;
+}
+  
+
+/*---- showtime ------*/
+
+.showtime .poster img{
+    /* height: 500px;
+    width: 350px; */
+    border-radius: 8px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+.showtime{
+    font-family: 'Poppins';
+}
+.showtime .fa-play-circle, .showtime .fa-comment-alt{
+    color: #fff;
+    margin-left: 10px;
+    position: relative;
+    top: 5px;
+}
+
+/* .showtime .reviews {
+    margin-top: 20px;
+    border: solid 3px #4682B4;
+    background-color: #4682B4;
+    color: #fff;
+    border-radius: 4px;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    padding-right: 42px;
+    position: relative;
+    left: 30px;
+} */
+/* .showtime .details{
+    margin-top: 20px;
+    border: solid 3px #333;
+    color: #ffff;
+    background-color: #333;
+    border-radius: 4px;
+    font-size: 18px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+    padding-right: 50px;
+    position: relative;
+    left: 30px;
+} */
+.showtime h6{
+    margin-top: 20px;
+    position: relative;
+    /* text-align: center; */
+    right: 30px;
+}
+.showtime h4{
+    position: relative;
+    text-align: center;
+    /* margin-right: 50px; */
+}
+.showtime-content{
+    font-family:'Poppins';
+    margin-top: 40px;
+    font-size: 18px;
+    margin-left: auto;
+}
+
+.header-showtime h4 {
+    text-align: left;
+}
+.body-showtime h4{
+    text-align: left;
+}
+
+
+/* progessbar */
+
+.progess-bar {
+    margin-top: 50px;
+    margin-left: 300px;
+    font-family: 'poppins';
+}
+.step-row{
+    width: 1200px;
+    height: 100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    
+}
+.step-col{
+    width: 300px;
+    text-align: center;
+    color: #333;
+    position: relative;
+    counter-reset: step;
+    font-size: 20px;
+}
+.step-col .number{
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    border: 5px solid #bebebe;
+    display: block;
+    margin: 0 auto 10px auto;
+    border-radius: 50%;
+    line-height: 50px;
+    background: white;
+    color: #bebebe;
+    text-align: center;
+    font-weight: bold;
+}
+
+.number.active{
+    color: #008B8B;
+    border: 5px solid #008B8B;
+    text-decoration: none;
+}
+.showtime .showtime-content{
+    margin: 0px;
+}
+.showtime .showtime-content h4{
+    margin-bottom: 30px;
+}
+
+/* .showtime .showtime-content nav label{
+    background-color: #fff;
+    color: #333;
+    padding-left: 40px;
+    padding-right: 40px;
+    margin-bottom: 20px;
+} */
+.showtime .showtime-content .location{
+    margin-left: 50px;
+    margin-top: 10px;
+}
+.showtime .showtime-content .body-location{
+    background-color:  #eceff1;
+    border-radius: 4px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.showtime .showtime-content .theater{
+    margin-left: 100px;
+}
+.showtime .showtime-content .time{
+    display: inline;
+}
+.showtime .showtime-content .time button{
+    background-color: #4682B4;
+    color: white;
+    border: none;
+    padding-left: 20px;
+    padding-right: 20px;
+    border: #4682B4 3px solid ;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+    margin-top: 10px;
+}
+.showtime .comments{
+    background-color: #eceff1;
+    border-radius: 4px;
+    padding: 20px;
+    padding-left: 40px;
+    margin-right: 50px;
+    margin-bottom: 100px;
+}
+.showtime .comments span{
+    font-size: 30px;
+    background-color: #fff;
+    color: #4682B4;
+    border: 6px solid #eceff1;
+    padding: 10px 50px;
+    border-radius: 4px;
+    position: relative;
+    bottom: 40px;
+}
+.showtime .comments #delete-form{
+    display: inline;
+}
+.showtime .comments .btn{
+    margin-bottom: 10px;
+}
+
+/*---- inside movies-details ------*/
+
+.movie-details{
+    font-family:'Poppins';
+    font-weight: 500;
+}
+.movie-details img{
+    width: 100%;
+}
+/* .movie-details .poster{
+    width: 350px;
+    height: 500px;
+} */
+/* 
+.movie-details .textopic{
+    position: relative;
+    color: white;
+    top: -450px;
+}
+.movie-details .textopic h1{
+    font-size: 50px;
+}
+.movie-details .textopic img{
+    height: 50px;
+    background-color: #fff;
+    padding: 12px;
+    width: 50px;
+    border-radius: 4px;
+    margin-left: 50px;
+}
+.movie-details .textopic .fas{
+    margin-top: 10px;
+    margin-left: 50px;
+}
+.movie-details .textopic span{
+    font-size: 24px;
+    position: relative;
+    bottom: 7px;
+
+}
+.movie-details .textopic button{
+    background-color: #333;
+    color: #fff;
+    padding: 10px 100px;
+    padding-right: 150px;
+    border: none;
+    font-size: 40px;
+    margin-top: 20px;
+    border-radius: 4px;
+}
+.movie-details .textopic button:hover{
+    background-color: #DCDCDC;
+    color: #333;
+} */
+/* .movie-details .video h5{
+   color: #333;
+   font-size: 30px;
+}
+.movie-details .border-trailer{
+    padding: 10px;
+    position: absolute;
+  
+
+}  */
+.content-details img{
+    width: 350px;
+    height: 250;
+    position: absolute;
+    top: 1000px;
+    margin-left: 200px;
+    border-radius: 8px;
+    z-index: 10;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+/* .content-details .beside-poster{
+    position: relative;
+    bottom: 250px;
+    right: 110px;
+} */
+/* .content-details .block-content{
+    background-color: #dedede;
+    padding-left: 200px;
+    padding-right: 50px;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    width: 800px;
+    border-radius: 4px;
+    z-index: 9;
+} */
+/* .content-details .block-content img{
+    height: 30px;
+    position:absolute;
+    top: 340px;
+    right: 430px;
+    box-shadow: none;
+} */
+.content-details .block-content .img-score{
+    padding-left: 10px;
+    height: 30px;
+    position:absolute;
+    top: 265px;
+    right: 430px;
+    box-shadow: none;
+}
+.content-details .block-content .img-genre{
+    padding-left: 10px;
+    height: 25px;
+    position:absolute;
+    top: 155px;
+    right: 430px;
+    box-shadow: none;
+}
+/* 
+.synopsis{
+
+    position: relative;
+    background-color: #DCDCDC;
+    padding-left: 100px;
+    border-radius:4px ;
+    bottom: 150px;
+}
+.synopsis span{
+    position: absolute;
+    font-size: 50px;
+    background-color: #fff;
+    padding-left: 50px;
+    border-radius: 4px;
+    padding-right: 50px;
+    top: -30px;
+    border: #dedede 3px solid;
+
+}
+.synopsis p{
+    padding-top: 80px;
+    padding-right: 50px;
+    position: relative;
+    padding-left: 50px;
+    padding-bottom: 50px;
+}
+.synopsis-trailer .video{
+    margin-top: 50px;
+}  */
+/* .video-trailer{
+    position: relative;
+    top: 400px;
+} */
+
+
+

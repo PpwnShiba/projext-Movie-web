@@ -1,0 +1,23 @@
+<%- include('../partials/header-nav.ejs') %> 
+<div class='container add-comment'>
+  <h1>Edit comment</h1>  
+  <div class="body">  
+    <div class="row align-items-start">
+      <div class="col">
+        <img src="<%= movie.image %>">
+      </div>
+      <div class="col besideposter">
+        <p>Movie name : <%= movie.name %></p>
+        <form action='/movies/<%= collection_id %>/new-comment/edit-comment/<%= comment._id %>?_method=PUT' method='POST'>
+              <input type="text" class="form-control" name='comment[text]' placeholder='<%= comment.text %>' value = '<%= comment.text %>'>
+              <button type="submit" class="btn btn-primary btn-submit">Submit</button>
+              <a href='/movies/movie-details/<%= movie._id %>'><button type="button" class="btn-back">Go back</button></a>
+          </div>
+          <button type="submit" class="btn btn-primary btn-submit-mobile">Submit</button>
+          <a href='/movies/movie-details/<%= movie._id %>'><button type="button" class="btn-back-mobile">Go back</button></a>
+          </form>
+    </div>
+  </div>
+</div>
+<%- include('../partials/footer.ejs') %> 
+

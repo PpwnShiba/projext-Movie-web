@@ -1,0 +1,65 @@
+.admin .btn-edit{
+    border: 2px solid #999;
+    font-size: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    position: absolute;
+    left: 180px;
+    bottom: 10px;
+
+}
+.admin .btn-delete{
+    position: absolute;
+    margin-left: 80px;
+    bottom: 10px;
+}
+/* ---- modal delete -----*/
+
+.modal-delete img{
+    width:120px;
+    height: 120px;
+    margin-left: 170px ;
+}
+.modal-delete .btn-close{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+}
+.modal-delete .modal-header, .modal-delete .modal-footer{
+    border: none;
+}
+.modal-delete .modal-body{
+    text-align: center;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.modal-delete .btn{
+    color: #fff;
+    border-radius: 4px;
+    line-height: normal;
+    min-width: 120px;
+    border: none;
+    min-height: 40px;
+    border-radius: 3px;
+    margin: 0 5px;
+}
+.modal-delete .btn-secondary {
+    background: #c1c1c1;
+    margin-bottom: 20px;
+}
+.modal-delete .btn-secondary:hover, .modal-delete .btn-secondary:focus {
+    background: #a8a8a8;
+}
+.modal-delete .btn-danger {
+    background: #f15e5e;
+    margin-right: 100px;
+    margin-bottom: 20px;
+}
+.modal-delete .btn-danger:hover, .modal-delete .btn-danger:focus {
+    background: #ee3535;
+}
+.cinema-admin img{
+    width: 100px;
+    height: 100px;
+}

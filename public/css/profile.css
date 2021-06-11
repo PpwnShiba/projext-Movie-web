@@ -1,0 +1,168 @@
+
+/* .profile-page .pic-left{
+    background-color: #dedede;
+    border-radius: 8px;
+    width: 1000px;
+    padding: 50px;
+    height: 450px;  
+} */
+
+/* .profile-page .pic-left .img-profile{
+    width: 200px;
+    height: 200px;
+    float: left;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+} */
+/* .profile-page .btn-logout{
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 40px;
+    padding-top: 10px;
+    top: 510px;
+    left: 165px;
+}
+.profile-page .btn-logout:hover{
+    background-color: #424949;
+} */
+/* .profile-page .btn-edit-pic{
+    background-color: #4682B4;
+    color: #fff;
+    border: none;
+    padding-top: 10px;
+    padding-left: 18px;
+    padding-right: 18px;
+    border-radius: 8px;
+    position: absolute;
+    top: 450px;
+    left: 160px;
+}
+.profile-page .btn-edit-pic:hover{
+    background-color: #2471a3;
+}
+.profile-page .fa-image{
+    margin-right: 10px;
+} */
+/*--------- buttons -------------*/
+.profile-page .right-buttons{
+    padding-left: 50px;
+}
+.profile-page .right-buttons .fas{
+    margin-right: 10px;
+}
+.profile-page .right-buttons .btn-fav, .profile-page .right-buttons .btn-comments, .profile-page .right-buttons .btn-history{
+    background-color: #CD5C5C;
+    color: #fff;
+    font-size: 30px;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 60px;
+    margin-bottom: 10px;
+    margin-top: 150px;
+    position: absolute;
+}
+.profile-page .right-buttons .btn-fav:hover{
+    background-color:   #c0392b  ;
+}
+.profile-page .right-buttons .btn-comments{
+    background-color: #4682B4;
+    margin-top: 250px;
+    padding: 10px 35px;
+}
+.profile-page .right-buttons .btn-comments:hover{
+    background-color: #2471a3;
+}
+.profile-page .right-buttons .btn-history{
+    background-color: #333;
+    margin-top: 350px;
+    padding: 10px 95px;
+} 
+.profile-page .right-buttons .btn-history:hover{
+    background-color: #424949;
+}
+/*---------- info -------------*/
+/* .profile-page .hi-user h3{
+    font-size: 50px;
+    font-weight: 100;
+} */
+/* .profile-page .info-profile{
+    display: block;
+    margin-left: 300px;
+    padding:50px;
+    background-color: #fff;
+    color: #333;
+    border-radius: 8px;
+}
+.profile-page .info-profile .fas{
+    margin-right: 10px;
+}
+
+.profile-page .info-profile h4{
+    margin-top: 20px;
+    margin-bottom: 20px;
+} */
+/*-------------- my favorite ------------*/
+/* .profile-page .myfavorite{
+    margin-top: 50px;
+} */
+/* .profile-page img{
+    height: 400px;
+    width: 250px;
+    border-radius: 10px ;
+}
+.profile-page .myfavorite .body{
+    background-color: #f2d7d5;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.profile-page .myfavorite .body span, .profile-page .mycomments .body span, .profile-page .myhistory .body span{
+    font-size: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 5px 50px;
+    border: 3px solid #f2d7d5;
+    position: relative;
+    bottom: 20px;
+    left: 80px;
+} */
+
+/*----------- swiper -----------*/
+/* .swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+  } */
+
+
+/*----------- my comments ------------*/
+.profile-page .mycomments, .profile-page .myhistory{
+    margin-top: 50px;
+}
+.profile-page .mycomments .body, .profile-page .myhistory .body{
+    background-color:  #d4e6f1;
+    width: 100%;
+    border-radius: 8px;
+}
+.profile-page .mycomments .body span{
+    border: 3px solid #d4e6f1;
+
+}
+
+/*---------- my history --------*/
+.profile-page .myhistory .body{
+    background-color: #dedede;
+}
+.profile-page .myhistory .body span{
+    border: 3px solid #dedede;
+}

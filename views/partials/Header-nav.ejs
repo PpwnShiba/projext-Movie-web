@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="your_website_domain/css_root/flaticon.css">
+    <!--boostrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    
+
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="/css/Movies.css">
+    <link rel="stylesheet" href="/css/cinema.css">
+    <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/seat.css">
+    
+
+</head>
+<body>
+
+    <!-- Button NAV BAR TOP -->
+
+    
+  <nav class="navbar navbar-expand-lg nav-home topnav" id="myTopnav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <span style="color: #008B8B;">GODZILLA</span>
+        <span style="color: white;">  THEARTER</span>
+      </a>
+      
+      <!-- dropdown phone menu  -->
+        <button class="navbar-toggler toggle-button"type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+      <div class="collapse navbar-collapse navbar-links" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 r">
+     
+          <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+              <button class="dropbtn" onclick="myFunction()">Movies
+                <i class="fa fa-caret-down"></i>
+              </button>
+              <div class="dropdown-content" id="myDropdown">
+                <a href="/Movies/Now-showing">Now Showing</a>
+                <a href="/Movies/Coming-soon">Coming Soon</a>
+              </div>
+           
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/Cinemas">Cinemas</a>
+          </li>
+          <% if(currentUser) {%>
+          <li class="nav-item">
+            <a class="nav-link" href="user/mypage">My Page</a>
+          </li>
+          <% } %> 
+        </ul>
+          <!-- Button Search HTML -->
+        <div class="search-movie">
+          <form class="d-flex " action="/movies/search-movie" method="post">
+            <input class="form-control  me-2 "  type="search" name = 'search_movie' placeholder="Search Movies Here . . ." aria-label="Search">
+            <button class="btn search-icon" type="submit">
+              <i class="fas fa-search fa-lg" style="color: white;"></i>
+            </button>
+          </form>
+        </div>
+        
+      <div class="login-btn">
+          <% if(!currentUser) {%>
+            <!-- Button Login HTML (to Trigger Modal) -->
+        <button type="button" class="btn btn-primary " data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+          <i style=" margin-right: 0.2cm; color: white; " class="fas fa-user-circle fa-lg" ></i>Login / Sign Up
+        </button>
+        <% } else { %>
+         
+          <li class="nav-item">
+            <div class="dropdown profile">
+              <button type="button" class="btn btn-primary btn-profile dropdown-toggle nav-link">
+                <i class="fas fa-user-circle fa-lg"></i>Logged as <%= currentUser.username %>
+              </button>
+              <div class="dropdown-content dropdown-profile">
+                <a href="/logout"><i class="fas fa-power-off fa-lg icon-login"></i>log out</a>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item loginas-mobile">
+            <div>
+              <div class="border-img"><img class="img-profile" src="<%= currentUser.profile %>" /></div>
+              <a class="edit-profile-mobile" href="/user/edit-profile"><i class="fas fa-edit fa-lg"></i>Edit Profile</a>
+              <div class="loginas-mobile-content">
+                <span><i class="fas fa-user-circle fa-lg"></i>Logged as <%= currentUser.username %></span>
+                <br><a class="logout-mobile" href="/logout"><i class="fas fa-power-off fa-lg icon-login"></i>log out</a>
+               
+              </div>
+            
+            </div>
+          </li>
+
+        <% } %> 
+        
+      
+      </div>
+    </div>
+  </nav>
+
+  <!-- Flash -->
+    <% if(error && error.length > 0) { %>
+    <div class='contianer-alert-danger '>
+      <div classs="container p-5">
+        <div role="alert">
+          <div class="img">
+            <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im00NTMuMzMyMDMxIDBoLTM5NC42NjQwNjJjLTMyLjM2MzI4MSAwLTU4LjY2Nzk2OSAyNi4zMDQ2ODgtNTguNjY3OTY5IDU4LjY2Nzk2OXYzOTQuNjY0MDYyYzAgMzIuMzYzMjgxIDI2LjMwNDY4OCA1OC42Njc5NjkgNTguNjY3OTY5IDU4LjY2Nzk2OWgzOTQuNjY0MDYyYzMyLjM2MzI4MSAwIDU4LjY2Nzk2OS0yNi4zMDQ2ODggNTguNjY3OTY5LTU4LjY2Nzk2OXYtMzk0LjY2NDA2MmMwLTMyLjM2MzI4MS0yNi4zMDQ2ODgtNTguNjY3OTY5LTU4LjY2Nzk2OS01OC42Njc5Njl6bTAgMCIgZmlsbD0iI2Y0NDMzNiIvPjxwYXRoIGQ9Im0zNTAuMjczNDM4IDMyMC4xMDU0NjljOC4zMzk4NDMgOC4zNDM3NSA4LjMzOTg0MyAyMS44NDc2NTYgMCAzMC4xNjc5NjktNC4xNjAxNTcgNC4xNjAxNTYtOS42MjEwOTQgNi4yNS0xNS4wODU5MzggNi4yNS01LjQ2MDkzOCAwLTEwLjkyMTg3NS0yLjA4OTg0NC0xNS4wODIwMzEtNi4yNWwtNjQuMTA1NDY5LTY0LjEwOTM3Ni02NC4xMDU0NjkgNjQuMTA5Mzc2Yy00LjE2MDE1NiA0LjE2MDE1Ni05LjYyMTA5MyA2LjI1LTE1LjA4MjAzMSA2LjI1LTUuNDY0ODQ0IDAtMTAuOTI1NzgxLTIuMDg5ODQ0LTE1LjA4NTkzOC02LjI1LTguMzM5ODQzLTguMzIwMzEzLTguMzM5ODQzLTIxLjgyNDIxOSAwLTMwLjE2Nzk2OWw2NC4xMDkzNzYtNjQuMTA1NDY5LTY0LjEwOTM3Ni02NC4xMDU0NjljLTguMzM5ODQzLTguMzQzNzUtOC4zMzk4NDMtMjEuODQ3NjU2IDAtMzAuMTY3OTY5IDguMzQzNzUtOC4zMzk4NDMgMjEuODI0MjE5LTguMzM5ODQzIDMwLjE2Nzk2OSAwbDY0LjEwNTQ2OSA2NC4xMDkzNzYgNjQuMTA1NDY5LTY0LjEwOTM3NmM4LjM0Mzc1LTguMzM5ODQzIDIxLjgyNDIxOS04LjMzOTg0MyAzMC4xNjc5NjkgMCA4LjMzOTg0MyA4LjMyMDMxMyA4LjMzOTg0MyAyMS44MjQyMTkgMCAzMC4xNjc5NjlsLTY0LjEwOTM3NiA2NC4xMDU0Njl6bTAgMCIgZmlsbD0iI2ZhZmFmYSIvPjwvc3ZnPg==" />
+          </div>
+        <div class="alert-content">
+          <div class="alert-body">
+            <h4 class="alert-heading">
+              Oops, Something wasn't right</h4>
+            <p><%= error %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%}%>
+    <% if(success && success.length > 0) { %>
+      <div class='contianer-alert-success '>
+        <div classs="container p-5">
+          <div role="alert">
+            <div class="img">
+              <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im01MTIgNTguNjY3OTY5YzAtMzIuMzYzMjgxLTI2LjMwNDY4OC01OC42Njc5NjktNTguNjY3OTY5LTU4LjY2Nzk2OWgtMzk0LjY2NDA2MmMtMzIuMzYzMjgxIDAtNTguNjY3OTY5IDI2LjMwNDY4OC01OC42Njc5NjkgNTguNjY3OTY5djM5NC42NjQwNjJjMCAzMi4zNjMyODEgMjYuMzA0Njg4IDU4LjY2Nzk2OSA1OC42Njc5NjkgNTguNjY3OTY5aDM5NC42NjQwNjJjMzIuMzYzMjgxIDAgNTguNjY3OTY5LTI2LjMwNDY4OCA1OC42Njc5NjktNTguNjY3OTY5em0wIDAiIGZpbGw9IiM0Y2FmNTAiLz48cGF0aCBkPSJtMzg1Ljc1IDE3MS41ODU5MzhjOC4zMzk4NDQgOC4zMzk4NDMgOC4zMzk4NDQgMjEuODIwMzEyIDAgMzAuMTY0MDYybC0xMzguNjY3OTY5IDEzOC42NjQwNjJjLTQuMTYwMTU2IDQuMTYwMTU3LTkuNjIxMDkzIDYuMjUzOTA3LTE1LjA4MjAzMSA2LjI1MzkwN3MtMTAuOTIxODc1LTIuMDkzNzUtMTUuMDgyMDMxLTYuMjUzOTA3bC02OS4zMzIwMzEtNjkuMzMyMDMxYy04LjM0Mzc1LTguMzM5ODQzLTguMzQzNzUtMjEuODI0MjE5IDAtMzAuMTY0MDYyIDguMzM5ODQzLTguMzQzNzUgMjEuODIwMzEyLTguMzQzNzUgMzAuMTY0MDYyIDBsNTQuMjUgNTQuMjUgMTIzLjU4NTkzOC0xMjMuNTgyMDMxYzguMzM5ODQzLTguMzQzNzUgMjEuODIwMzEyLTguMzQzNzUgMzAuMTY0MDYyIDB6bTAgMCIgZmlsbD0iI2ZhZmFmYSIvPjwvc3ZnPg==" />
+            </div>
+          <div class="alert-content">
+            <div class="alert-body">
+              <h4 class="alert-heading">
+              Great success!</h4>
+              <p><%= success %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    <%}%>
+  </div>
+  
+    
+
+  <!-- Modal Login HTML-->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <div class="modal-title" id="staticBackdropLabel">
+            <h5>WELCOME</h5>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form action="/login" method="post">
+            <div class="form-group">
+              <input type="text" class="form-control" name="username" placeholder="Username" required="required">		
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="password" placeholder="Password" required="required">	
+            </div>
+   
+            <div class="form-group" id="login-btn">
+              <button type="submit" class="form-control btn btn-login">LOGIN</button>
+            </div>
+            <hr size="2" style="color: #999; margin:auto 10px 15px;">
+            <h6>Don't have an account?</h6> 
+            <div class="form-group">
+              <button type="button" class="form-control btn btn-signup" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" data-bs-dismiss="modal">SIGN UP</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+ 
+  <!-- Modal -->
+  <!-- <% if(currentUser) {%>
+  <div class="modal fade" id="failtologin" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %>  -->
+
+
+
+
+
+  <!-- Modal Sign up HTML-->
+  <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <div class="modal-title" id="staticBackdropLabel">
+            <h5>CREATE ACCOUNT</h5>
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          <form action="/register" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+              <input type="text" class="form-control" name="username" placeholder="Username" required="required">		
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" name="password" placeholder="Password" required="required">	
+            </div>
+            <div class="form-group">
+              <label  class="form-label" style="color: #999; margin-left: 10px;">Choose your Picture</label>
+              <input type="file" class="form-control" name='picture_profile' accept="image/*">
+            </div>
+            <div class="form-group">
+              <input type="email" class="form-control" name="email" placeholder="Email" required="required">		
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="name" placeholder="Name" required="required">		
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" name="surename" placeholder="Surename" required="required">		
+            </div> 
+
+            <div class="form-group">
+              <button type="submit" class="form-control btn btn-login">SIGN UP</button>
+            </div>
+            <hr size="2" style="color: #999; margin:auto 10px 15px;">
+            <h6>Already have an account?</h6> 
+            <div class="form-group">
+              <button type="button" class="form-control btn btn-signup" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#staticBackdrop">LOG IN</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="modal-footer">
+          
+        </div>
+
+      </div>
+    </div>
+  </div>
+<script>
+  /* When the user clicks on the button, 
+  toggle between hiding and showing the dropdown content */
+  function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+  }
+
+  // Close the dropdown if the user clicks outside of it
+  window.onclick = function(e) {
+    if (!e.target.matches('.dropbtn')) {
+    var myDropdown = document.getElementById("myDropdown");
+      if (myDropdown.classList.contains('show')) {
+        myDropdown.classList.remove('show');
+      }
+    }
+  }
+  const toggleButton = document.getElementsByClassName('toggle-button')[0]
+  const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+  toggleButton.addEventListener('click', () => {
+    navbarLinks.classList.toggle('active')
+  })
+
+
+</script>
+    
+
+
+
+    
+<!-- BOOTSTRAP -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script> -->
+
+
+
+  
+  

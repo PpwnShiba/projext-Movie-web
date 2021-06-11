@@ -1,0 +1,555 @@
+<%- include('partials/header-nav.ejs') %> 
+
+<div class="progess-bar">
+    <div class="step-row">
+      <div id="progress"></div>
+      <div class="step-col" id="select-showtime"><p class="number">1</p>
+        <p>Select showtime</p>
+      </div>
+      <div class="step-col" id="select-seat"><p class="number active">2</p>
+        <p>Select Seat</p> 
+      </div>
+      <div class="step-col" id="payment"><p class="number">3</p>
+        <p>Finish</p>
+      </div>
+     
+    </div>
+</div>
+<form action="/movies/reserve" method="POST">
+  <% location.theater.forEach(function(nametheater){ %>
+    <% seat_id.forEach(function(seat){ %>
+      <% if(String(seat._id)===String(nametheater.seats) && String(theater_id)===String(nametheater._id)){ %>
+       
+          <div class="img-selectseat">
+            <div class="container py-5 ">
+              <div class="row align-items-center">
+                <div class="col-5">
+                  <img src="<%= movie.image %>">
+                </div>
+                <div class="col-5 background">
+                  <div class="content-selectseat">
+                    <h4><%= movie.name %></h4>
+                
+                    <h4>date: <%=date %></h4>
+                    <h4>Location : <%= location.location %></h4>
+                    <h4>Theater : <%= nametheater.name %></h4>
+                    
+                    <h6><i class="far fa-clock"></i> <%= movie.time %></h6>
+                    <a href="/movies/movie-details/<%= movie._id %>">
+                      <button class="details" type="button">movie details <i class="fas fa-play-circle fa-2x"></i></button> 
+                    </a> 
+                  </div>
+                  
+                </div>
+          
+                  
+                        <div class="row align-items-start">
+                          <div class="col-9">
+                            <div class="select-seat">
+                              <div class="container">
+
+                                <ul class="showcase">
+                                  <li>
+                                    <div class="seat"></div>
+                                    <small>N/A</small>
+                                  </li>
+                                  <li>
+                                    <div class="seat selected"></div>
+                                    <small>Selected</small>
+                                  </li>
+                                  <li>
+                                    <div class="seat occupied"></div>
+                                    <small>Occupied</small>
+                                  </li>
+                                </ul>
+                                <div class="screen"></div>
+                            
+                            
+                                <div class="row" id="F">
+                                  <% if ( seat.seats.includes('F1') ) { %>
+                                    <div class="seat" id="F1" onclick="reserve('F1')">
+                                      <input type="hidden" name="F1" id="iF1" value="n">
+                                    </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="F1"></div>
+                                  <% } %>
+                                  
+                                  <% if ( seat.seats.includes('F2') ) { %>
+                                    <div class="seat" id="F2" onclick="reserve('F2')">
+                                      <input type="hidden" name="F2" id="iF2" value="n">
+                                    </div>
+                                    <% } else { %>
+                                      <div class="seat occupied" id="F2"></div>
+                                    <% } %>
+                                
+                                    <% if ( seat.seats.includes('F3') ) { %>
+                                  <div class="seat" id="F3" onclick="reserve('F3')">
+                                    <input type="hidden" name="F3" id="iF3" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="F3"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('F4') ) { %>
+                                  <div class="seat" id="F4" onclick="reserve('F4')">
+                                    <input type="hidden" name="F4" id="iF4" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="F4"></div>
+                                  <% } %>
+                                  
+                                  <% if ( seat.seats.includes('F5') ) { %>
+                                  <div class="seat " id="F5" onclick="reserve('F5')">
+                                    <input type="hidden" name="F5" id="iF5" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="F5"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('F6') ) { %>
+                                  <div class="seat " id="F6" onclick="reserve('F6')">
+                                    <input type="hidden" name="F6" id="iF6" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="F6"></div>
+                                  <% } %>
+                          
+                                  <% if ( seat.seats.includes('F7') ) { %>
+                                  <div class="seat" id="F7" onclick="reserve('F7')">
+                                    <input type="hidden" name="F7" id="iF7" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="F7"></div>
+                                  <% } %>
+                            
+                                  <% if ( seat.seats.includes('F8') ) { %>
+                                  <div class="seat" id="F8" onclick="reserve('F8')">
+                                    <input type="hidden" name="F8" id="iF8" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="F8"></div>
+                                  <% } %>
+                                
+                                </div>
+
+                                <div class="row" id="E">
+
+                                  <% if ( seat.seats.includes('E1') ) { %>
+                                  <div class="seat" id="E1" onclick="reserve('E1')">
+                                    <input type="hidden" name="E1" id="iE1" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="E1"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('E2') ) { %>
+                                  <div class="seat" id="E2" onclick="reserve('E2')">
+                                    <input type="hidden" name="E2" id="iE2" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="E2"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('E3') ) { %>
+                                  <div class="seat" id="E3" onclick="reserve('E3')">
+                                    <input type="hidden" name="E3" id="iE3" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="E3"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('E4') ) { %>
+                                  <div class="seat" id="E4" onclick="reserve('E4')">
+                                    <input type="hidden" name="E4" id="iE4" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="E4"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('E5') ) { %>
+                                  <div class="seat" id="E5" onclick="reserve('E5')">
+                                    <input type="hidden" name="E5" id="iE5" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="E5"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('E6') ) { %>
+                                  <div class="seat" id="E6" onclick="reserve('E6')">
+                                    <input type="hidden" name="E6" id="iE6" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="E6"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('E7') ) { %>
+                                  <div class="seat " id="E7" onclick="reserve('E7')"> 
+                                    <input type="hidden" name="E7" id="iE7" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="E7"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('E8') ) { %>
+                                  <div class="seat" id="E8" onclick="reserve('E8')">
+                                    <input type="hidden" name="E8" id="iE8" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="E8"></div>
+                                  <% } %>
+                              
+                                </div>
+
+                                <div class="row" id="D">
+
+                                  <% if ( seat.seats.includes('D1') ) { %>
+                                  <div class="seat" id="D1" onclick="reserve('D1')">
+                                    <input type="hidden" name="D1" id="iD1" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="D1"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('D2') ) { %>
+                                  <div class="seat" id="D2" onclick="reserve('D2')">
+                                    <input type="hidden" name="D2" id="iD2" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="D2"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('D3') ) { %>
+                                  <div class="seat" id="D3" onclick="reserve('D3')">
+                                    <input type="hidden" name="D3" id="iD3" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="D3"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('D4') ) { %>
+                                  <div class="seat" id="D4" onclick="reserve('D4')">
+                                    <input type="hidden" name="D4" id="iD4" value="n">
+                                  </div>    
+                                  <% } else { %>
+                                    <div class="seat occupied" id="D4"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('D5') ) { %>
+                                  <div class="seat" id="D5" onclick="reserve('D5')">
+                                    <input type="hidden" name="D5" id="iD5" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="D5"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('D6') ) { %>
+                                  <div class="seat" id="D6" onclick="reserve('D6')">
+                                    <input type="hidden" name="D6" id="iD6" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="D6"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('D7') ) { %>
+                                  <div class="seat" id="D7" onclick="reserve('D7')">
+                                    <input type="hidden" name="D7" id="iD7" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="D7"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('D8') ) { %>
+                                  <div class="seat" id="D8" onclick="reserve('D8')">
+                                    <input type="hidden" name="D8" id="iD8" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="D8"></div>
+                                  <% } %>
+                                
+                                </div>
+                                <div class="row" id="C">
+
+                                  <% if ( seat.seats.includes('C1') ) { %>
+                                  <div class="seat" id="C1" onclick="reserve('C1')">
+                                    <input type="hidden" name="C1" id="iC1" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="C1"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('C2') ) { %>
+                                  <div class="seat" id="C2" onclick="reserve('C2')">
+                                    <input type="hidden" name="C2" id="iC2" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="C2"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('C3') ) { %>
+                                  <div class="seat" id="C3" onclick="reserve('C3')">
+                                    <input type="hidden" name="C3" id="iC3" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="C3"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('C4') ) { %>
+                                  <div class="seat" id="C4" onclick="reserve('C4')" >
+                                    <input type="hidden" name="C4" id="iC4" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="C4"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('C5') ) { %>
+                                  <div class="seat" id="C5" onclick="reserve('C5')">
+                                    <input type="hidden" name="C5" id="iC5" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="C5"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('C6') ) { %>
+                                  <div class="seat" id="C6" onclick="reserve('C6')">
+                                    <input type="hidden" name="C6" id="iC6" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="C6"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('C7') ) { %>
+                                  <div class="seat" id="C7" onclick="reserve('C7')">
+                                    <input type="hidden" name="C7" id="iC7" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="C7"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('C8') ) { %>
+                                  <div class="seat" id="C8" onclick="reserve('C8')">
+                                    <input type="hidden" name="C8" id="iC8" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="C8"></div>
+                                  <% } %>
+                                
+                                </div>
+                                <div class="row" id="B">
+                                  <% if ( seat.seats.includes('B1') ) { %>
+                                  <div class="seat" id="B1" onclick="reserve('B1')">
+                                    <input type="hidden" name="B1" id="iB1" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="B1"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('B2') ) { %>
+                                  <div class="seat" id="B2" onclick="reserve('B2')">
+                                    <input type="hidden" name="B2" id="iB2" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="B2"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('B3') ) { %>
+                                  <div class="seat" id="B3" onclick="reserve('B3')">
+                                    <input type="hidden" name="B3" id="iB3" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="B3"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('B4') ) { %>
+                                  <div class="seat" id="B4" onclick="reserve('B4')">
+                                    <input type="hidden" name="B4" id="iB4" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="B4"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('B5') ) { %>
+                                  <div class="seat " id="B5" onclick="reserve('B5')">
+                                    <input type="hidden" name="B5" id="iB5" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="B5"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('B6') ) { %>
+                                  <div class="seat" id="B6" onclick="reserve('B6')">
+                                    <input type="hidden" name="B6" id="iB6" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="B3"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('B7') ) { %>
+                                  <div class="seat" id="B7" onclick="reserve('B7')">
+                                    <input type="hidden" name="B7" id="iB7" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="B7"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('B8') ) { %>
+                                  <div class="seat" id="b8" onclick="reserve('B8')">
+                                    <input type="hidden" name="B8" id="iB8" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="B8"></div>
+                                  <% } %>
+                                  
+                                </div>
+                                <div class="row" id="A">
+                                  <% if ( seat.seats.includes('A1') ) { %>
+                                  <div class="seat" id="A1" onclick="reserve('A1')">
+                                    <input type="hidden" name="A1" id="iA1" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="A1"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('A2') ) { %>
+                                  <div class="seat" id="A2" onclick="reserve('A2')">
+                                    <input type="hidden" name="A2" id="iA2" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="A2"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('A3') ) { %>
+                                  <div class="seat" id="A3" onclick="reserve('A3')">
+                                    <input type="hidden" name="A3" id="iA3" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="A3"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('A4') ) { %>
+                                  <div class="seat" id="A4" onclick="reserve('A4')">
+                                    <input type="hidden" name="A4" id="iA4" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="A4"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('A5') ) { %>
+                                  <div class="seat" id="A5" onclick="reserve('A5')">
+                                    <input type="hidden" name="A5" id="iA5" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="A5"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('A6') ) { %>
+                                  <div class="seat" id="A6" onclick="reserve('A6')">
+                                    <input type="hidden" name="A6" id="iA6" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="A6"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('A7') ) { %>
+                                  <div class="seat" id="A7" onclick="reserve('A7')">
+                                    <input type="hidden" name="A7" id="iA7" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="A7"></div>
+                                  <% } %>
+
+                                  <% if ( seat.seats.includes('A8') ) { %>
+                                  <div class="seat" id="A8" onclick="reserve('A8')">
+                                    <input type="hidden" name="A8" id="iA8" value="n">
+                                  </div>
+                                  <% } else { %>
+                                    <div class="seat occupied" id="A8"></div>
+                                  <% } %>
+                                
+                                </div>
+                                
+                              </div>
+
+                            </div>
+                          </div>
+              
+                  <div class="col-3">
+                    <div class="ticket-selectseat">
+                      <h1>Reservation</h1>
+                      <h3 style="color: gray;">Seat: <span id="seat"></span></h3>
+                      <h3 style="color: gray;">Seat: <span id="num-seat"></span></h3>
+                      <h3 style="color: gray;">Price: <span id="price"></span> Baht</h3>
+                      <div style="position: relative; height: 80px;">
+                          <button id="submit" type="submit" class="btn btn-primary seat-submit" >Reserve</button>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <input type="hidden" name="reserve[date]" value="<%=date %>">
+                <input type="hidden" name="reserve[location]" value="<%= location.location %>">
+                <input type="hidden" name="reserve[movie]" value="<%= movie._id %>">
+                <input type="hidden" name="reserve[theater]" value="<%= nametheater.name %>">
+                <input type="hidden" name="reserve[seat_id]" value="<%= seat._id %>">
+              </div>
+            </div>
+          </div>
+<% } %>
+<% }); %>
+<% }); %>
+</form>
+
+
+<script>
+ 
+
+
+  var price = 0; seat = 0;
+  document.getElementById("seat").innerHTML = seat;
+  document.getElementById("price").innerHTML = price;
+  if ( seat > 0 ) {
+      document.getElementById('submit').style.display='block';
+  }
+  else if ( seat == 0 ) {
+      document.getElementById('submit').style.display='none';
+  }
+  function reserve(selectedSeat) {
+      if(document.getElementById('i' + selectedSeat).value == 'n'){
+          document.getElementById(selectedSeat).style.backgroundColor = '#5F9EA0';
+          document.getElementById('i' + selectedSeat).value = 'y';
+       
+          seat += 1;
+          price += 120;
+ 
+          document.getElementById("num-seat").innerHTML += selectedSeat + " ";
+          document.getElementById("seat").innerHTML = seat;
+          document.getElementById("price").innerHTML = price;
+          
+      }
+      else if(document.getElementById('i' + selectedSeat).value == 'y'){
+          document.getElementById(selectedSeat).style.backgroundColor = '#444451';
+          document.getElementById('i' + selectedSeat).value = 'n';
+          
+          seat -= 1;
+          price -= 120;
+            
+          document.getElementById("num-seat").innerHTML = "";
+          document.getElementById("seat").innerHTML = seat;
+          document.getElementById("price").innerHTML = price;
+      }
+      if ( seat > 0 ) {
+          document.getElementById('submit').style.display='block';
+      }
+      else if ( seat == 0 ) {
+          document.getElementById('submit').style.display='none';
+      }
+  }
+
+</script>
+     
+
+
+
+
+
+<%- include('partials/footer.ejs') %> 

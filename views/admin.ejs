@@ -1,0 +1,192 @@
+<%- include('partials/header-admin.ejs') %> 
+<div class="container">
+	<div class="table-title">
+		<div class="row">
+			<div class="col-xs-6">
+				<h2>Manage <b>Movies</b></h2>
+			</div>
+			<div class="col-xs-6">
+				<!-- Button trigger modal -->
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+					Add New Movie
+				</button>
+				<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+					Add New Cinema
+				</button>
+			
+			</div>
+		</div>
+	</div>	
+</div>
+
+<div class="container movies admin">
+
+<!--  GRID CARD MOVIES Now showing -->
+    
+  <div id="page-nowshowing" >
+    <div class="album py-5 ">
+      <div class="container movie-cards">
+        <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-4 ">
+
+          <% allmovies_now.forEach(function(allmovies_now){ %>
+          <div class="col">
+            <div class="card">
+              <img src="<%= allmovies_now.image %>" class="card-img-top">
+
+                <div class="card-body">
+                  <a href="/Movies/Movie-Showtime/<%= allmovies_now._id %>">
+                    <i class="fas fa-play play-btn" data-toggle="tooltip" data-placement="bottom" title="Play Trailer" ></i>
+                  </a>
+                  
+                  <h6 class="card-title"><%= allmovies_now.name %></h6>
+
+				  <a href="/admin/edit/<%= allmovies_now._id %>"><button type="button" class="btn btn-edit">edit</button></a>
+			
+				  <!--Delete-->
+				  <form id="btn-form" action="/admin/<%= allmovies_now._id %>?_method=Delete" method="POST" >
+					<button onclick="areYouSureDelete()" type="button" class="btn btn-danger btn-delete" data-bs-toggle="modal" data-bs-target="#exampleModal-delete">
+						Delete
+					</button>
+				  </form>
+				
+				  
+				  
+
+                </div> 
+            
+            </div>
+          </div>
+
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Button trigger modal -->
+
+<!-- Modal add new movie one -->
+<div class="modal fade modal-addnewone" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+	<div class="modal-content">
+	<div class="modal-header">
+		<h5 class="modal-title" id="exampleModalLabel">Add New Movie</h5>
+		<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	</div>
+	<div class="modal-body">
+		<form action="/admin/add-movies" method="post" enctype="multipart/form-data">
+			<div class="form-group">
+			<label  class="form-label">Movie Name</label>
+			<input type="text" class="form-control" name="addmov[name]">		
+			</div>
+			<div class="form-group">
+			<label  class="form-label">Poster</label>
+			<input type="file" class="form-control" name='poster' accept="image/*">
+			</div>
+			<div class="form-group">
+			<label  class="form-label">Header</label>
+			<input type="file" class="form-control" name='header' accept="image/*">
+			</div>
+			<div class="form-group">
+			<label  class="form-label">score</label>
+			<input type="text" class="form-control" name="addmov[score]">		
+			</div>
+			<div class="form-group">
+			<label  class="form-label">rate</label>
+			<input type="text" class="form-control" name="addmov[rate]">		
+			</div>
+			<div class="form-group">
+			<label  class="form-label">time</label>
+			<input type="text" class="form-control" name="addmov[time]">		
+			</div>
+			<div class="form-group">
+			<label  class="form-label">genre</label>
+			<input type="text" class="form-control" name="addmov[genre]">		
+			</div>
+			<div class="form-group">
+			<label  class="form-label">Release date</label>
+			<input type="text" class="form-control" name="addmov[Release]">		
+			</div>
+			<div class="form-group">
+			<label  class="form-label">Director</label>
+			<input type="text" class="form-control" name="addmov[Director]">		
+			</div>
+			<div class="form-group">
+			<label  class="form-label">title</label>
+			<input type="text" class="form-control" name="addmov[title]">		
+			</div>
+
+		</div>
+		<div class="modal-footer">
+			<button type="submit" class="btn btn-primary">Add New One</button>
+			<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+		</div>
+	</form>
+	</div>
+</div>
+</div>
+
+
+<!-- Modal add new cinema one -->
+<div class="modal fade modal-addnewone" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+		<div class="modal-header">
+			<h5 class="modal-title" id="exampleModalLabel">Add New Cinema</h5>
+			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		</div>
+		<div class="modal-body">
+			<form action="/admin/add-cinema" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<label  class="form-label">Location Name</label>
+					<input type="text" class="form-control" name="addcinema[location]">		
+				</div>
+				<div class="form-group">
+					<label  class="form-label">Logo</label>
+					<input type="file" class="form-control" name='logo' accept="image/*">
+				</div>
+			
+			</div>
+			<div class="modal-footer">
+				<button type="submit" class="btn btn-primary">Add New Cinema</button>
+				<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+			</div>
+		</form>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+<script>
+	
+function areYouSureDelete() {
+	swal({
+	title: "Are you sure?",
+	text: "Once deleted, you will not be able to recover this imaginary file!",
+	icon: "warning",
+	buttons: true,
+	dangerMode: true,
+	})
+	.then((willDelete) => {
+	if (willDelete) {
+		swal("Poof! Your imaginary file has been deleted!", {
+		icon: "success",
+			
+		});
+	} else { 
+		swal("Your imaginary file is safe!");
+	}
+	});
+}
+
+</script>
+
+<%- include('partials/footer.ejs') %> 

@@ -1,0 +1,435 @@
+
+<%- include('partials/header-nav.ejs') %> 
+
+<% var today = new Date().getDate();%> 
+<% var D2 = new Date().getDate()+1;%> 
+<% var D3 = new Date().getDate()+2;%> 
+<% var D4 = new Date().getDate()+3;%> 
+<% var D5 = new Date().getDate()+4;%> 
+
+<% var month = new Date().toLocaleString('en-US', { month: 'short' })%> 
+<% var year = new Date().getFullYear()%>
+
+
+<% var seat = '60c0ff5d537ca5189c29e58c' %>
+
+<div class="progess-bar">
+  <div class="step-row">
+    <div id="progress"></div>
+    <div class="step-col" id="select-showtime"><p class="number active">1</p>
+      <p>Select showtime</p>
+    </div>
+    <div class="step-col" id="select-seat"><p class="number">2</p>
+      <p>Select Seat</p> 
+    </div>
+    <div class="step-col" id="payment"><p class="number">3</p>
+      <p>Finish</p>
+    </div>
+   
+  </div>
+</div>
+
+<form action="/movies/reserve/select-seat/<%= movie._id %>" method="POST">
+
+<div class="showtime container">
+    <div class="content-poster">
+           <div class="poster">
+                <div class="container py-5 ">
+                    <div class="row align-items-start">
+                      <div class="col">
+                        <h4><%= movie.name %></h4>
+                        <img src="<%= movie.image %>">
+                        <div class="info-movie">
+                          <h6>Genre: <%= movie.genre %> <br>Rate: <%= movie.rate %> <br><i class="far fa-clock"></i> <%= movie.time %></h6>
+                        </div>
+                        
+                        <a href="/movies/movie-details/<%= movie._id %>">
+                          <button class="details" type="button">movie details <i class="fas fa-play-circle fa-2x"></i></button> 
+                        </a> 
+                        <a href="#movie-reviews">
+                          <button class="reviews" type="button">movie reviews <i class="fas fa-comment-alt fa-2x"></i></button> 
+                        </a>
+                        
+                      </div>
+                      <div class="col-8">
+                        
+                          <div class="showtime-content">
+                            <h4 >showtime</h4>
+                                    <div class="block-showtime">
+
+                                        <nav>
+                                          <input type="radio" value="<%= today %> <%= month %> <%= year %>" class="btn-check" name="select[date]" id="option1" autocomplete="off" checked onclick="check(this.value)">
+                                          <label class="btn btn-secondary" for="option1">today</label>
+        
+                                          <input type="radio"  value="<%= D2 %> <%= month %> <%= year %>"  class="btn-check" name="select[date]" id="option2" autocomplete="off" onclick="check(this.value)">
+                                          <label class="btn btn-secondary" for="option2"><%= D2 %> <%= month %> <%= year %></label>
+        
+                                          <input type="radio" value="<%= D3 %> <%= month %> <%= year %>" class="btn-check" name="select[date]" id="option3" autocomplete="off" onclick="check(this.value)" >
+                                          <label class="btn btn-secondary" for="option3"><%= D3 %> <%= month %> <%= year %></label>
+        
+                                          <input type="radio" value="<%= D4 %> <%= month %> <%= year %>" class="btn-check" name="select[date]" id="option4" autocomplete="off" onclick="check(this.value)">
+                                          <label class="btn btn-secondary" for="option4"><%= D4 %> <%= month %> <%= year %></label>
+        
+                                          <input type="radio"   value="<%= D5 %> <%= month %> <%= year %>" class="btn-check" name="select[date]" id="option5" autocomplete="off" onclick="check(this.value)">
+                                          <label class="btn btn-secondary" for="option5"><%= D5 %> <%= month %> <%= year %></label>
+                                        </nav>
+
+                                        <% foundlocation.forEach(function(location){ %>
+                                          <div class="body-location">
+                                          <p class="location"><%= location.location %> </p>
+                                          <% var i = 0; %>
+              
+                                          <% location.theater.forEach(function(theater){ %>
+                                            <% i++; %>
+                                            <div class="body-theater">
+                                              <span class="theater"><%= theater.name %></span>
+                                              <% if(i==1){ %>
+                                                <div class="col-10 pt-3 px-5 time">
+                                                  <button class="11:30" type="submit" name="select[theater]" value="<%= theater._id %>" >
+                                                    11:30
+                                        
+                                                    <!-- <input type="hidden" name="select[time]" value="11:30"> -->
+                                                  </button>
+                                                  <button class="13:00" type="submit" name="select[theater]"  value="<%= theater._id %>">
+                                                    13:00
+                                                    <!-- <input type="hidden" name="select[time]" value="13:30"> -->
+                                                  </button>
+                                                  <button class="15:30" type="submit" name="select[theater]"  value="<%= theater._id %>">
+                                                    15:30
+                                                    <!-- <input type="hidden" name="select[time]" value="15:30"> -->
+                                                  </button>
+                                                  <button class="18:00" type="submit" name="select[theater]"  value="<%= theater._id %>">
+                                                    18:00
+                                                    <!-- <input type="hidden" name="select[time]" value="18:00"> -->
+                                                  </button>
+                                                  <button class="21:00" type="submit" name="select[theater]"  value="<%= theater._id%>">
+                                                    21:00
+                                                    <!-- <input type="hidden" name="select[time]" value="21:00"> -->
+                                                  </button>
+                                                </div>  
+                                              <% } %>
+                                              <% if(i==2){ %>
+                                                <div class="col-10 pt-3 px-5 time">
+                                                  <button class="13:00" type="submit" name="select[theater]" value="<%= theater._id %>">
+                                                    13:00
+                                                    <!-- <input type="hidden" name="select[time]" value="13:00"> -->
+                                                  </button>
+                                                  <button class="15:30" type="submit" name="select[theater]" value="<%= theater._id %>">
+                                                    15:30
+                                                    <!-- <input type="hidden" name="select[time]" value="15:30"> -->
+                                                  </button>
+                                                  <button class="18:00" type="submit" name="select[theater]" value="<%= theater._id %>">
+                                                    18:00
+                                                    <!-- <input type="hidden" name="select[time]" value="18:00"> -->
+                                                  </button>
+                                                  <button class="20:00" type="submit" name="select[theater]" value="<%= theater._id %>">
+                                                    20:00
+                                                    <!-- <input type="hidden" name="select[time]" value="20:00"> -->
+                                                  </button>
+                                                </div>  
+                                              <% } %>
+                                              <% if(i==3){ %>
+                                                <div class="col-10 pt-3 px-5 time">
+                                                  <button class="12:00" type="submit" name="select[theater]" value="<%= theater._id %>">
+                                                    12:00
+                                                    <!-- <input type="hidden" name="select[time]" value="12:00"> -->
+                                                  </button>
+                                                  <button class="15:30" type="submit" name="select[theater]" value="<%= theater._id %>">
+                                                    15:30
+                                                    <!-- <input type="hidden" name="select[time]" value="15:30"> -->
+                                                  </button>
+                                                  <button class="19:00" type="submit" name="select[theater]" value="<%= theater._id %>">
+                                                    19:00
+                                                    <!-- <input type="hidden" name="select[time]" value="19:00"> -->
+                                                  </button>
+                                                </div>  
+
+                                              <% } %>
+                                              <br>
+                                            </div>
+                                          <% }); %>
+                                        </div>
+                                        <% }); %>
+
+
+                                    
+                                    </div>
+                                  </div>
+          
+                                </div>
+                              
+                          </div>
+                        
+                      </div>
+                    </div>
+                    <div class="comments" id="movie-reviews">
+                      <span>Movie Reviews</span>
+                      <% movie.comments.forEach(function(comment){ %>
+                        <p>
+                            <strong><%= comment.author.username %></strong> - <%= comment.text %>
+                        </p>    
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                          <a class="btn btn-warning" href = '/movies/<%= movie._id %>/new-comment/<%= comment._id %>/edit-commet'>Edit comment</a>
+                    
+                          <form id = 'delete-form' action = '/movies/<%= movie._id %>/new-comment/delete-comment/<%= comment._id %>?_method=DELETE' method='POST'>
+                              <button type='submit' class="btn btn-danger">Delete</button>
+                          </form>
+                        <% } %>   
+                      
+                      <% }); %>
+                    
+                      <br><a class="btn btn-primary" href = '/movies/<%= movie._id %>/new-comment/comment'>Add new comment</a>
+                    
+                    </div>
+                </div>
+        
+        </div>
+        
+   
+    </div>
+
+</div>
+</form>
+
+
+<script>
+
+
+  var currentTime = new Date();
+  var hours = currentTime.getHours(), minutes = currentTime.getMinutes();
+  var day = new Date().getDate();
+  var month = new Date().toLocaleString('en-US', { month: 'short' });
+  var year = new Date().getFullYear();
+  var today = day+' '+ month+' '+year;
+  var selectDay = document.getElementById("option1").value;
+
+  if ( today == selectDay ) {
+      if ( hours == 11 && minutes > 45 || hours > 11){
+          var k = document.getElementsByClassName("11:30");
+          for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 12 && minutes > 15 || hours > 12){
+        var k = document.getElementsByClassName("12:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      
+      if ( hours >= 13 && minutes > 15 || hours > 13 ){
+        var k = document.getElementsByClassName("13:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 15 && minutes > 45 || hours > 15 ){
+        var k = document.getElementsByClassName("15:30");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 18 && minutes > 15 || hours > 18 ){
+        var k = document.getElementsByClassName("18:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 19 && minutes > 15 || hours > 19 ){
+        var k = document.getElementsByClassName("19:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 20 && minutes > 15 || hours > 20){
+        var k = document.getElementsByClassName("20:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 21 && minutes > 15 || hours > 21){
+        var k = document.getElementsByClassName("21:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+  }
+
+  function check(checkSelectDay) {
+      if ( today == checkSelectDay ) {
+        if ( hours == 11 && minutes > 45 || hours > 11){
+          var k = document.getElementsByClassName("11:30");
+          for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 12 && minutes > 15 || hours > 12){
+        var k = document.getElementsByClassName("12:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      
+      if ( hours >= 13 && minutes > 15 || hours > 13 ){
+        var k = document.getElementsByClassName("13:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 15 && minutes > 45 || hours > 15 ){
+        var k = document.getElementsByClassName("15:30");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 18 && minutes > 15 || hours > 18 ){
+        var k = document.getElementsByClassName("18:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 19 && minutes > 15 || hours > 19 ){
+        var k = document.getElementsByClassName("19:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 20 && minutes > 15 || hours > 20){
+        var k = document.getElementsByClassName("20:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      if ( hours >= 21 && minutes > 15 || hours > 21){
+        var k = document.getElementsByClassName("21:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor=' #ccd1d1 ';
+            k[i].style.opacity='0.5';
+            k[i].style.cursor='default';
+            k[i].style.border='#ccd1d1 3px solid';
+          }
+      }
+      } else if ( today != checkSelectDay ) {
+        if ( hours == 11 && minutes > 45 || hours > 11){
+          var k = document.getElementsByClassName("11:30");
+          for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor='#4682B4';
+            k[i].style.opacity='1';
+            k[i].style.cursor='pointer';
+            k[i].style.border='#4682B4 3px solid';
+          }
+      }
+      if ( hours >= 12 && minutes > 15 || hours > 12){
+        var k = document.getElementsByClassName("12:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor='#4682B4';
+            k[i].style.opacity='1';
+            k[i].style.cursor='pointer';
+            k[i].style.border='#4682B4 3px solid';
+          }
+      }
+      
+      if ( hours >= 13 && minutes > 15 || hours > 13 ){
+        var k = document.getElementsByClassName("13:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor='#4682B4';
+            k[i].style.opacity='1';
+            k[i].style.cursor='pointer';
+            k[i].style.border='#4682B4 3px solid';
+          }
+      }
+      if ( hours >= 15 && minutes > 45 || hours > 15 ){
+        var k = document.getElementsByClassName("15:30");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor='#4682B4';
+            k[i].style.opacity='1';
+            k[i].style.cursor='pointer';
+            k[i].style.border='#4682B4 3px solid';
+          }
+      }
+      if ( hours >= 18 && minutes > 15 || hours > 18 ){
+        var k = document.getElementsByClassName("18:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor='#4682B4';
+            k[i].style.opacity='1';
+            k[i].style.cursor='pointer';
+            k[i].style.border='#4682B4 3px solid';
+          }
+      }
+      if ( hours >= 19 && minutes > 15 || hours > 19 ){
+        var k = document.getElementsByClassName("19:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor='#4682B4';
+            k[i].style.opacity='1';
+            k[i].style.cursor='pointer';
+            k[i].style.border='#4682B4 3px solid';
+          }
+      }
+      if ( hours >= 20 && minutes > 15 || hours > 20){
+        var k = document.getElementsByClassName("20:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor='#4682B4';
+            k[i].style.opacity='1';
+            k[i].style.cursor='pointer';
+            k[i].style.border='#4682B4 3px solid';
+        
+          }
+      }
+      if ( hours >= 21 && minutes > 15 || hours > 21){
+        var k = document.getElementsByClassName("21:00");
+        for(var i=0; i<k.length;i++){
+            k[i].style.backgroundColor='#4682B4';
+            k[i].style.opacity='1';
+            k[i].style.cursor='pointer';
+            k[i].style.border='#4682B4 3px solid';
+          }
+      }
+      }
+  }
+</script>
+<%- include('partials/footer.ejs') %> 
