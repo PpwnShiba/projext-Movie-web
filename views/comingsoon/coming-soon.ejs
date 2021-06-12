@@ -1,4 +1,4 @@
-<%- include('partials/header-nav.ejs') %> 
+<%- include('../partials/header-nav.ejs') %> 
 
 <div class="search-movie-mobile">
   <form class="d-flex " action="/movies/search-movie" method="post">
@@ -20,23 +20,46 @@
     <div  id="page-comingsoon">
       <div class="album py-5 ">
         <div class="container movie-cards">
-          <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-4 ">
+          <div class="row g-3 justify-content-center">
+            <% var i = 0; %>
             <% allmovies_coming.forEach(function(allmovies_coming){ %>
             <div class="col">
               <div class="card">
                 <img src="<%= allmovies_coming.image %>" class="card-img-top">
   
                   <div class="card-body">
-                    <a href="/Movies/Movie-Showtime">
+                    <a href="/movies/movie-details/comingsoon/<%= allmovies_coming._id %>">
                       <i class="fas fa-play play-btn" data-toggle="tooltip" data-placement="bottom" title="Play Trailer" ></i>
                     </a>
                     <h6 class="card-title"><%= allmovies_coming.name %></h6>
                     <!-- <span class="movie-info"><i class="fas fa-star"></i> 9 / 10 </span> -->
+                    <form id="btn-form" action="/user/myfav/comingsoon/<%= allmovies_coming._id %>/<%= allmovies_coming.name %>" method="GET" >
+                      <button type="button" class="btn btn-danger btn-addfav" data-bs-toggle="modal" data-bs-target="#Modal_coming<%= i %>">
+                        <i class="fas fa-heart fa-lg"></i><span>Add to my favorite</span>
+                      </button>
+                      <div class="modal fade modal-addfav" id="Modal_coming<%= i %>" tabindex="-1">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body" ><i class="far fa-laugh fa-6x" style="margin-left: 120px; margin-bottom: 20px;" ></i>
+                              <p style="text-align: center;">Add <%=allmovies_coming.name %> to favorite?</p> 
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>                         
+                              <button type="submit" class="btn btn-success">Confirm</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
                   </div> 
               
               </div>
             </div>
-            <% }) %>
+            <% i++}); %>
+
           </div>
         </div>
         
@@ -45,5 +68,4 @@
 </div>
 </div>
 
-
-<%- include('partials/footer.ejs') %> 
+<%- include('../partials/footer.ejs') %> 

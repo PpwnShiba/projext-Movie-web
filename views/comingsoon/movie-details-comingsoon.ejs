@@ -1,0 +1,92 @@
+<%- include('../partials/header-nav.ejs') %> 
+<div class="movie-details ">
+    <img src="<%= movie.header %>" >
+    <div class="album py-5 ">
+        <div class="container position-relative ">
+            <div class="row align-items-start">
+                <div class="col-sm-4 textopic">
+                        <h1><%= movie.name %></h1>
+                        <h4>
+                            <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIDAgNTEyIDUxMi4wMDA1IiB3aWR0aD0iNTEycHQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0ibTIyMCAwaC0yMDBjLTExLjA0Njg3NSAwLTIwIDguOTUzMTI1LTIwIDIwdjIwMGMwIDExLjA0Njg3NSA4Ljk1MzEyNSAyMCAyMCAyMGgyMDBjMTEuMDQ2ODc1IDAgMjAtOC45NTMxMjUgMjAtMjB2LTIwMGMwLTExLjA0Njg3NS04Ljk1MzEyNS0yMC0yMC0yMHptLTIwIDIwMGgtMTYwdi0xNjBoMTYwem0yOTkuNjU2MjUgNzMuNTIzNDM4Yy03LjQ3MjY1Ni0zLjA5NzY1Ny0xNi4wNzgxMjUtMS4zODY3MTktMjEuNzk2ODc1IDQuMzMyMDMxbC0yMDAgMjAwYy01LjcyMjY1NiA1LjcyMjY1Ni03LjQzMzU5NCAxNC4zMjQyMTktNC4zMzU5MzcgMjEuNzk2ODc1IDMuMDk3NjU2IDcuNDc2NTYyIDEwLjM4NjcxOCAxMi4zNDc2NTYgMTguNDc2NTYyIDEyLjM0NzY1NmgyMDBjMTEuMDQ2ODc1IDAgMjAtOC45NTMxMjUgMjAtMjB2LTIwMGMwLTguMDg5ODQ0LTQuODcxMDk0LTE1LjM4MjgxMi0xMi4zNDM3NS0xOC40NzY1NjJ6bS0yNy42NTYyNSAxOTguNDc2NTYyaC0xMzEuNzE0ODQ0bDEzMS43MTQ4NDQtMTMxLjcxNDg0NHptLTgwLTIzMmM2Ni4xNjc5NjkgMCAxMjAtNTMuODMyMDMxIDEyMC0xMjBzLTUzLjgzMjAzMS0xMjAtMTIwLTEyMC0xMjAgNTMuODMyMDMxLTEyMCAxMjAgNTMuODMyMDMxIDEyMCAxMjAgMTIwem0wLTIwMGM0NC4xMTMyODEgMCA4MCAzNS44ODY3MTkgODAgODBzLTM1Ljg4NjcxOSA4MC04MCA4MC04MC0zNS44ODY3MTktODAtODAgMzUuODg2NzE5LTgwIDgwLTgwem0tMTU3Ljg1OTM3NSAyNjYuMTQ0NTMxLTg1Ljg1NTQ2OSA4NS44NTU0NjkgODUuODU1NDY5IDg1Ljg1NTQ2OWM3LjgxMjUgNy44MTI1IDcuODEyNSAyMC40NzY1NjIgMCAyOC4yODUxNTYtNy44MDg1OTQgNy44MDg1OTQtMjAuNDcyNjU2IDcuODEyNS0yOC4yODEyNSAwbC04NS44NTkzNzUtODUuODU1NDY5LTg1Ljg1OTM3NSA4NS44NTkzNzVjLTcuODA4NTk0IDcuODA4NTk0LTIwLjQ3MjY1NiA3LjgwODU5NC0yOC4yODEyNSAwLTcuODEyNS03LjgxMjUtNy44MTI1LTIwLjQ3NjU2MiAwLTI4LjI4NTE1Nmw4NS44NTU0NjktODUuODU5Mzc1LTg1Ljg1NTQ2OS04NS44NTU0NjljLTcuODEyNS03LjgxMjUtNy44MTI1LTIwLjQ3NjU2MiAwLTI4LjI4NTE1NiA3LjgwODU5NC03LjgxMjUgMjAuNDcyNjU2LTcuODEyNSAyOC4yODEyNSAwbDg1Ljg1OTM3NSA4NS44NTU0NjkgODUuODU5Mzc1LTg1Ljg1OTM3NWM3LjgwODU5NC03LjgwODU5NCAyMC40NzI2NTYtNy44MDg1OTQgMjguMjgxMjUgMCA3LjgxMjUgNy44MTI1IDcuODEyNSAyMC40NzY1NjIgMCAyOC4yODkwNjJ6bTAgMCIvPjwvc3ZnPg==" />
+                            <span> Genre : <%= movie.genre %></span>
+                        </h4>
+                        <i class="fas fa-star fa-3x"></i><span> Rate: <%= movie.rate %></span>
+                        <br><i class="fas fa-history fa-3x"></i><span> Running Time: <%= movie.time %></span>
+                        <form action="#" style="display: none;">
+                            <button>
+                               <i class="fas fa-ticket-alt fa-lg"></i>
+                                Get Tickets
+                            </button>
+                        </form> 
+                </div>
+                <div class="col video ">
+                    <div class="border-trailer">
+                        <h5>Watch the Trailer</h5>
+                        <iframe width="420" height="315" class="float-end"
+                        src="https://www.youtube.com/embed/<%= movie.video %>">
+                        </iframe> 
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+        <div class="content-details container">
+            <div class="row align-items-start poster-content">
+                <div class="col poster">
+                    <img src="<%= movie.image %>" > 
+                </div>
+                <div class="col-sm beside-poster">
+                   <div class="block-content">
+                    <h1  class="text"><%= movie.name %></h1>
+                    <h4  class="text">Genre : <%= movie.genre %></h4>
+                    <h4  class="text">Rate <i class="fas fa-star"></i> : <%= movie.rate %></h4>
+                    <h4  class="text">Running Time <i class="fas fa-history "></i>  : <%= movie.time %></h4>
+                    <h4  class="text">Score <i class="fas fa-star" ></i> : <%= movie.score %></h4>
+                    <h4  class="text">Release Date <i class="fas fa-calendar-alt"></i> : <%= movie.ReleaseDate %></h4>              
+                    <h4  class="text">Director : <%= movie.Director %></h4>
+                    <div class="get-ticket-poster">
+                        <button class="btn-showtime" style="display: none;">
+                            Showtime<i class="fas fa-ticket-alt fa-lg"></i>
+                        </button>
+                    </div>
+                    <div class="get-ticket-poster" style="display: none;">
+                        <a href="#moviereviews"><button class="btn-movie-reviews">
+                            Movie Reviews<i class="fas fa-comment-alt"></i>
+                        </button></a>
+                    </div>
+                   </div>
+                   
+                </div>
+            </div>
+            <div class="row align-items-start synopsis">
+                <div class="col">
+                    <span>Synopsis</span>
+                    <p><%= movie.title %></p>
+                </div>
+            </div>
+            <div class="row align-items-start ">
+                <div class="col-sm-4 col-md-8 video-mobile">
+                    <div class="border-trailer">
+                        <h5>Watch the Trailer</h5>
+                        <iframe class="float-end"
+                        src="https://www.youtube.com/embed/<%= movie.video %>">
+                        </iframe> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="get-ticket-mobile">
+                <button class="btn-showtime">
+                    showtime
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<%- include('../partials/footer.ejs') %> 

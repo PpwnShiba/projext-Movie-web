@@ -1,0 +1,67 @@
+<%- include('../partials/header-nav.ejs') %> 
+
+<div class="each-location">
+    <div class="row">
+        <div class="col-md-6 col-lg-6 col-xl-4">
+          <div class="location">
+            <p class="head-logo"><i class="fas fa-map-marker-alt"></i>Location : <%= foundlocation.location %></p>
+            <img class="logo" src="<%= foundlocation.logo %>">
+            <p class="theater">All theater in this location :
+           <% foundlocation.theater.forEach(function(theater){ %>
+            <%= theater.name %>
+           <% }); %>
+          </p>
+        </div>
+        </div>
+        <div class="col-md-6 col-lg-6 col-xl-8">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <% movies.forEach(function(movie){ %>
+                    <div class="swiper-slide">
+                      <p ><%= movie.name %></p>
+                      <p><img class="poster" src="<%= movie.image %>" alt=""></p>
+                      <a href="/movies/movie-showtime/<%= movie._id%>"><button type="button" class="btn btn-primary">Get ticket</button></a>
+                    </div>
+                    <% }); %>
+                  </div>
+                  <!-- Add Pagination -->
+                  <div class="swiper-pagination"></div>
+                </div>
+          </div>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    var swiper = new Swiper('.swiper-container', {
+         slidesPerView: 1,
+         spaceBetween: 10,
+         // init: false,
+         pagination: {
+           el: '.swiper-pagination',
+           clickable: true,
+         },
+         breakpoints: {
+           320:{
+             slidesPerView: 1,
+             spaceBetween: 10,
+           },
+           768: {
+             slidesPerView: 1,
+             spaceBetween: 20,
+           },
+           1024: {
+             slidesPerView: 1,
+             spaceBetween: 10,
+           },
+           1200:{
+             slidesPerView: 3,
+             spaceBetween: 100,
+           }
+         }
+       });
+       
+   </script>
+
+<%- include('../partials/footer.ejs') %> 

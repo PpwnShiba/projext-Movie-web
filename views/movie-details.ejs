@@ -12,12 +12,12 @@
                         </h4>
                         <i class="fas fa-star fa-3x"></i><span> Rate: <%= movie.rate %></span>
                         <br><i class="fas fa-history fa-3x"></i><span> Running Time: <%= movie.time %></span>
-                        <form action="#">
+                       <a href="/movies/movie-showtime/<%= movie._id %>">
                             <button>
                                <i class="fas fa-ticket-alt fa-lg"></i>
                                 Get Tickets
                             </button>
-                        </form> 
+                        </a>
                 </div>
                 <div class="col video ">
                     <div class="border-trailer">
@@ -45,9 +45,9 @@
                     <h4  class="text">Release Date <i class="fas fa-calendar-alt"></i> : <%= movie.ReleaseDate %></h4>              
                     <h4  class="text">Director : <%= movie.Director %></h4>
                     <div class="get-ticket-poster">
-                        <button class="btn-showtime">
+                        <a href="/movies/movie-showtime/<%= movie._id %>"><button class="btn-showtime">
                             Showtime<i class="fas fa-ticket-alt fa-lg"></i>
-                        </button>
+                        </button></a>
                     </div>
                     <div class="get-ticket-poster">
                         <a href="##moviereviews"><button class="btn-movie-reviews">

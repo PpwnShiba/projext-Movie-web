@@ -41,15 +41,22 @@
                                     <!-- <strong> - <%= fav._id %></strong> -->
                                   
                                 <% foundmovie.forEach(function(foundmovie){ %>
-                                    <% if(String(foundmovie._id) === String(fav._id) ){ %>
-                                       
-                                        <p><img src="<%= foundmovie.image %>"></p>
-                                        <form id = 'delete-form' action = '/user/delete-favorite/<%= fav._id %>?_method=DELETE' method='POST'>
-                                            <button type='submit' class="btn btn-danger">Remove from favorite</button>
-                                        </form>
-                                   <% } %>
-                                <% }) %>
-                                
+                                  
+                                    <% if(String(foundmovie._id) === String(fav._id)){ %>
+                                      <p><img src="<%= foundmovie.image %>"></p>
+                                      <form id = 'delete-form' action = '/user/delete-favorite/<%= fav._id %>?_method=DELETE' method='POST'>
+                                          <button type='submit' class="btn btn-danger">Remove from favorite</button>
+                                      </form>
+                                    <% } %>
+                                <% }); %>
+                                <% foundmoviecoming.forEach(function(coming){ %>
+                                  <% if(String(coming._id) === String(fav._id)){ %>
+                                    <p><img src="<%= coming.image %>"></p>
+                                    <form id = 'delete-form' action = '/user/delete-favorite/<%= fav._id %>?_method=DELETE' method='POST'>
+                                        <button type='submit' class="btn btn-danger">Remove from favorite</button>
+                                    </form>
+                                  <% } %>
+                                <% }); %>
                             </div> 
                             <% }); %>
                         </div>
@@ -100,24 +107,29 @@
                       <div class="swiper-wrapper">
                       
                         <% founduser.reservation.forEach(function(userreserve){ %>
-                        <div class="swiper-slide">
+                        
                           <% foundreserve.forEach(function(reserve){ %>
                             <% if(String(userreserve._id) === String(reserve._id)){ %>
+                              
                                 <% foundmovie.forEach(function(movie){ %>
                                   <% if(String(movie._id)===String(reserve.movie)){ %>
-                                    <p><%= movie.name %></p>
-                                    <p><img src="<%= movie.image %>" alt=""></p>
+                                    <div class="swiper-slide">
+                                      <p><%= movie.name %></p>
+                                      <p><img src="<%= movie.image %>" alt=""></p>
+                                      <p><b> Location :</b> <%= reserve.location %></p>
+                                      <p><b> Theater  :</b> <%= reserve.theater %></p>
+                                      <p><b> Date     :</b> <%= reserve.date %></p>
+                                      <p><b>Seats : </b> 
+                                      <% reserve.seats.forEach(function(seats){ %>
+                                        <%= seats %>
+                                      <% }); %>
+                                    </p>
+                                    </div>
                                   <% } %>
                                 <% }); %>
-                                <p><b> Location :</b> <%= reserve.location %></p>
-                                <p><b> Theater  :</b> <%= reserve.theater %></p>
-                                <p><b> Date     :</b> <%= reserve.date %></p>
-                                <p><b>Bought Time : </b> <%= reserve.boughtTime %></p>
-                                <p><b>Seats : </b> 
-                                <% reserve.seats.forEach(function(seats){ %>
-                                  <%= seats %>
-                                <% }); %>
-                                </p>
+                                
+                                
+                              
                               <% } %>
                          
                             <% }); %>
@@ -139,10 +151,7 @@
     </div>
 </div>
 
-<!-- Button trigger modal -->
-<button >
-  Launch demo modal
-</button>
+
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

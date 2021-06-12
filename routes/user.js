@@ -6,7 +6,7 @@ var express = require('express'),
     middleware = require('../middleware'),
     movies = require('../models/movies'),
     comments = require('../models/comments'),
-
+    moviescomingsoon = require('../models/movies_comingsoon'),
     multer = require('multer'),
     middleware = require('../middleware'),
     path = require('path');
@@ -28,6 +28,7 @@ var express = require('express'),
 
     upload  = multer({storage: storage, fileFilter: imageFilter});
 
+//add favorite
 router.get('/myfav/:id/:name',middleware.isLoggedIn,function(req,res){
     movies.findById(req.params.id, function(err, foundmovie){
         if(err){
@@ -42,12 +43,34 @@ router.get('/myfav/:id/:name',middleware.isLoggedIn,function(req,res){
                     founduser.myfav.push(foundmovie);
                     founduser.save();
                     console.log('added to favorite complete');
+                    req.flash('success', 'Added this movie to your favorite complete');
                     res.redirect('/');
                 }
             });
         }
     });
 });
+router.get('/myfav/comingsoon/:id/:name',middleware.isLoggedIn,function(req,res){
+    moviescomingsoon.findById(req.params.id, function(err, foundmovie){
+        if(err){
+            console.log(err);
+        }else{
+            User.findById(req.user._id, function(err, founduser){
+                if(err){
+                    console.log(err);
+                }else{
+                    founduser.myfav.name = req.params.name;
+                    founduser.myfav.push(foundmovie);
+                    founduser.save();
+                    console.log('added to favorite complete');
+                    req.flash('success', 'Added this movie to your favorite complete');
+                    res.redirect('/');
+                }
+            });
+        }
+    });
+});
+//delete favorite
 router.delete('/delete-favorite/:favorite_id', function(req, res){
    
     User.findById(req.user._id, function(err, founduser){
@@ -76,11 +99,46 @@ router.post('/edit-picture',  upload.single('picture_profile'),function(req,res)
             res.redirect('/user/mypage');
         }else{
             console.log('edit profile complete');
+            req.flash('success', 'Edited your profile complete');
             res.redirect('/user/mypage'); 
         }
     });
 });
+
 router.get('/mypage',function(req, res){
+    User.findById(req.user._id).populate('comments').populate('myfav').exec(function(err, foundCollection){
+        if(err){
+            console.log(err);
+            res.redirect('/');
+        } else {
+            movies.find({}, function(err, foundmovie){
+                if(err){
+                    console.log(err);
+                }else{
+                    moviescomingsoon.find({}, function(err, foundmoviecoming){
+                        if(err){
+                            console.log(err);
+                        }else{
+                            reserve.find({}, function(err, foundreserve){
+                                if(err){
+                                    console.log(err);
+                                }else{
+                                    console.log(foundCollection);
+                                    res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve, foundmoviecoming:foundmoviecoming});
+                                }
+                            });
+                        }
+                    });
+                    
+                   
+                }
+            });
+            
+        }
+    });
+});
+
+router.get('/user/mypage',function(req, res){
     User.findById(req.user._id).populate('comments').populate('myfav').exec(function(err, foundCollection){
         if(err){
             console.log(err);
@@ -105,7 +163,5 @@ router.get('/mypage',function(req, res){
         }
     });
 });
-
-
 
 module.exports = router;

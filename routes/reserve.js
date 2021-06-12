@@ -13,8 +13,8 @@ var express     = require('express'),
 
 /* ------------- goto select seat -------------------*/ 
 
-router.post('/select-seat/:id_movie',function(req,res){
-    Movies.findById(req.params.id_movie, function(err, foundMovie){
+router.post('/select-seat/:id_movie', middleware.isLoggedIn,function(req,res){
+    Movies.findById(req.params.id_movie , function(err, foundMovie){
         if(err){
             console.log(err);
         } else{
@@ -218,6 +218,7 @@ router.post('/', middleware.isLoggedIn, function(req, res){
                             res.redirect('/');
                         }
                     });
+                    req.flash('success', 'reserve complete');
                 }
             });
             function reserveSeat(seat, reserve) {

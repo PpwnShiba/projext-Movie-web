@@ -3,8 +3,8 @@ var express = require('express'),
     router = express.Router(),
     User = require('../models/user'),
     passport = require('passport'),
-    moives = require('../models/movies'),
-
+    movies = require('../models/movies'),
+    moviescomingsoon = require('../models/movies_comingsoon'),
     multer = require('multer'),
     middleware = require('../middleware'),
     path = require('path'),
@@ -27,13 +27,19 @@ var express = require('express'),
   upload  = multer({storage: storage, fileFilter: imageFilter});
 
 router.get('/',function(req,res){
-    moives.find({}, function(err, allMovies){
+    movies.find({}, function(err, allMovies){
         if(err){
             console.log(err);
         }else{
-            console.log('Found one');
-            res.render('Home.ejs', {allmovies_now: allMovies}); 
+            moviescomingsoon.find({}, function(err, allmovies_coming){
+                if(err){
+                    console.log(err);
+                }else{
+                    res.render('Home.ejs', {allmovies_now: allMovies, allmovies_comingsoon:allmovies_coming}); 
+                }
+            });
         }
+        
     });
 });
 
@@ -45,7 +51,11 @@ router.get('/register', function(req, res){
 router.post('/register', upload.single('picture_profile'), function(req, res){
 
     req.body.picture_profile = '/uploads/'+req.file.filename;
+
     var newUser = new User({username: req.body.username, email: req.body.email, name: req.body.name, surename: req.body.surename, profile:req.body.picture_profile});
+    if(req.body.admincode === 'topsecret'){
+        newUser.IsAdmin = true;
+    }
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             console.log(err);

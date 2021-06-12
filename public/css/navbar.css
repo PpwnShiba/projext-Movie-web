@@ -183,6 +183,53 @@
 }
 
 
+/*---------- dropdown ---------------*/
+.nav-home .nav-item .dropbtn{
+  background-color: #28282B;
+  color: #ddd;
+  border: none;
+  padding-left: 0;
+  font-size: 18px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.nav-home .nav-item .dropbtn:hover{
+  color: #008B8B;
+}
+.nav-home .nav-item .dropdown-content{
+  position: absolute;
+  z-index:100;
+}
+.show {
+  display: block;
+}
+.nav-home .navbar-links {
+  display: none;
+  width: 100%;
+}
+/*----- search------*/
+.search-movie-mobile{
+  display: none;
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.search-movie-mobile .search-cinema {
+  font-family: 'Prompt';
+  border-radius: 5px;
+  border: #008B8B 2px solid;
+  box-shadow: 0 6px 8px rgba(12, 10, 10, 0.15);
+  height: 50px;
+  width: 400px;
+  color: #008B8B;
+  padding-left: 20px;
+ 
+}
+.search-movie-mobile button{
+  background-color: white;
+  border: none;
+  position: relative;
+  top: 3px
+}
 /* --------- Alert - Danger -------------- */
 
 .contianer-alert-danger  img {
@@ -238,54 +285,23 @@
   right: 30px;
   top: 20px;
 }
-/*---------- dropdown ---------------*/
-.nav-home .nav-item .dropbtn{
-  background-color: #28282B;
-  color: #ddd;
-  border: none;
-  padding-left: 0;
-  font-size: 18px;
-  margin-top: 8px;
-  margin-bottom: 8px;
+.modal-addfav h5, .modal-addfav .modal-body, .modal-delete h5, .modal-delete .modal-body{
+  color: #333;
 }
-.nav-home .nav-item .dropbtn:hover{
-  color: #008B8B;
+.modal-addfav .modal-body, .modal-delete .modal-body{
+  font-size: 20px;
 }
-.nav-home .nav-item .dropdown-content{
-  position: absolute;
-  z-index:100;
+.modal-addfav .modal-footer .btn-secondary, .modal-delete .modal-footer .btn-secondary{
+  background-color: #999;
+  color: #fff;
 }
-.show {
-  display: block;
+.modal-addfav .modal-footer .btn-success{
+  background-color: #2471a3;
+  color: #fff;
 }
-.nav-home .navbar-links {
-  display: none;
-  width: 100%;
+.modal-delete .modal-footer .btn-success{
+  background-color: #CD5C5C;
 }
-/*----- search------*/
-.search-movie-mobile{
-  display: none;
-  margin-top: 20px;
-  margin-left: 30px;
-}
-.search-movie-mobile .search-cinema {
-  font-family: 'Prompt';
-  border-radius: 5px;
-  border: #008B8B 2px solid;
-  box-shadow: 0 6px 8px rgba(12, 10, 10, 0.15);
-  height: 50px;
-  width: 400px;
-  color: #008B8B;
-  padding-left: 20px;
- 
-}
-.search-movie-mobile button{
-  background-color: white;
-  border: none;
-  position: relative;
-  top: 3px
-}
-
 
 @media screen and (max-width: 600px) {
   /*----- toggle menu --------*/
@@ -415,6 +431,17 @@
     background-color: #fff;
     border-radius:4px ;
   }
+  .header .icon-btn{
+    height: 50px;
+    width: 50px;
+    margin-left: 10px;
+  }
+  .header .btn-secondary{
+    font-family: 'poppins';
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding: 10px 50px;
+  }
   /*----- movies page --------*/
 
   .header-movies-page .body{
@@ -427,157 +454,157 @@
 
   /*--------- movie details ----------*/
 
-.movie-details{
-  margin-bottom: 100px;
-}
-.get-ticket-mobile{
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  z-index: 11;
-  right: 0;
-}
-.get-ticket-mobile .btn-showtime{
-  margin:0;
-  font-size: 30px;
-  width: 100%;
-  border: none;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: #333;
-  color: #fff;
-}
-.get-ticket-poster{
-  display: none;
-}
-.movie-details .textopic{
-  display: none;
-}
-.movie-details .poster img{
-  position: absolute;
-  top: -320px;
-  left: -180px;
-  width: 180px;
-  height: 280px;
-  /*  width: 350px;
-  height: 500px; */
-}
+  .movie-details{
+    margin-bottom: 100px;
+  }
+  .get-ticket-mobile{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 11;
+    right: 0;
+  }
+  .get-ticket-mobile .btn-showtime{
+    margin:0;
+    font-size: 30px;
+    width: 100%;
+    border: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #333;
+    color: #fff;
+  }
+  .get-ticket-poster{
+    display: none;
+  }
+  .movie-details .textopic{
+    display: none;
+  }
+  .movie-details .poster img{
+    position: absolute;
+    top: -320px;
+    left: -180px;
+    width: 180px;
+    height: 280px;
+    /*  width: 350px;
+    height: 500px; */
+  }
 
-.movie-details .video {
-  display: none;
-}
-.movie-details .video-mobile iframe{
-  width:400px;
-  height:315px;
-}
-.movie-details .video-mobile{
-  position:relative;
-  top: 100px;
-  left: 20px;
-  margin-top: 350px;
-}
-.movie-details .video-mobile h5{
-  position: absolute;
-  font-size: 30px;
-  background-color: #fff;
-  border: #dedede 3px solid;
-  padding-left: 50px;
-  border-radius: 4px;
-  padding-right: 50px;
-  top: -30px;
-}
-.movie-details .video-mobile .border-trailer{
-  padding: 10px;
-  padding-top: 30px;
-  bottom: 50px;
-  position: absolute;
-  border: #DCDCDC solid 5px;
-  border-radius: 4px;
-  background-color: #dedede;
-}
+  .movie-details .video {
+    display: none;
+  }
+  .movie-details .video-mobile iframe{
+    width:400px;
+    height:315px;
+  }
+  .movie-details .video-mobile{
+    position:relative;
+    top: 100px;
+    left: 20px;
+    margin-top: 350px;
+  }
+  .movie-details .video-mobile h5{
+    position: absolute;
+    font-size: 30px;
+    background-color: #fff;
+    border: #dedede 3px solid;
+    padding-left: 50px;
+    border-radius: 4px;
+    padding-right: 50px;
+    top: -30px;
+  }
+  .movie-details .video-mobile .border-trailer{
+    padding: 10px;
+    padding-top: 30px;
+    bottom: 50px;
+    position: absolute;
+    border: #DCDCDC solid 5px;
+    border-radius: 4px;
+    background-color: #dedede;
+  }
 
-.content-details .poster-content{
-  position: absolute;
-} 
-.content-details .beside-poster .block-content{
-  background-color: #dedede;
-  position: absolute;
-  font-size: 10px;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  padding-left: 100px;
-  margin-left: 20px;
-  margin-right: 20px;
-  left: 100px;
-  bottom: 20px;
-  width: 350px;
-  border-radius: 4px;
-  z-index: 9;
-}
-.content-details .block-content .text{
-  font-size: 10px;
-}
-.content-details .beside-poster .block-content h1{
-  font-size: 20px;
-}
-.synopsis{
-  top: 50px;
-  margin-top: 300px;
-  margin-left: 25px;
-  margin-right:25px ;
-  position: relative;
-  background-color: #DCDCDC;
-  border-radius:4px ;
-  margin-bottom: 50px;
-}
-.synopsis span, .movie-details .comments .header-comments{
-  position: absolute;
-  font-size: 40px;
-  background-color: #fff;
-  padding-left: 50px;
-  border-radius: 4px;
-  padding-right: 50px;
-  top: -30px;
-  border: #dedede 3px solid;
-}
-.synopsis p{
-  font-size: 15px;
-  padding-top: 80px;
-  padding-right: 50px;
-  position: relative;
-  padding-left: 50px;
-  padding-bottom: 50px;
-}
-.movie-details .comments{
-  background-color: #dedede;
-  border-radius: 4px;
-  margin-top: 100px;
-  padding-left: 50px;
-  padding-right: 50px;
-}
-.movie-details .comments .header-comments{
-  position: relative;
-  font-size: 29px;
-}
-.movie-details .comments .fas {
-  margin-left: 10px;
-}
-.movie-details .comments .btn-addcomment{
-  display: none;
-}
-.movie-details .comments #delete-form{
-  display: inline;
-}
-.movie-details .comments .btn-addcomment-mobile{
-  background-color: #4682B4;
-  width: 100%;
-  border: none;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-.movie-details .comments .btn-addcomment-mobile:hover{
-  background-color: #2471a3;
-}
+  .content-details .poster-content{
+    position: absolute;
+  } 
+  .content-details .beside-poster .block-content{
+    background-color: #dedede;
+    position: absolute;
+    font-size: 10px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    padding-left: 100px;
+    margin-left: 20px;
+    margin-right: 20px;
+    left: 100px;
+    bottom: 20px;
+    width: 350px;
+    border-radius: 4px;
+    z-index: 9;
+  }
+  .content-details .block-content .text{
+    font-size: 10px;
+  }
+  .content-details .beside-poster .block-content h1{
+    font-size: 20px;
+  }
+  .synopsis{
+    top: 50px;
+    margin-top: 300px;
+    margin-left: 25px;
+    margin-right:25px ;
+    position: relative;
+    background-color: #DCDCDC;
+    border-radius:4px ;
+    margin-bottom: 50px;
+  }
+  .synopsis span, .movie-details .comments .header-comments{
+    position: absolute;
+    font-size: 40px;
+    background-color: #fff;
+    padding-left: 50px;
+    border-radius: 4px;
+    padding-right: 50px;
+    top: -30px;
+    border: #dedede 3px solid;
+  }
+  .synopsis p{
+    font-size: 15px;
+    padding-top: 80px;
+    padding-right: 50px;
+    position: relative;
+    padding-left: 50px;
+    padding-bottom: 50px;
+  }
+  .movie-details .comments{
+    background-color: #dedede;
+    border-radius: 4px;
+    margin-top: 100px;
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  .movie-details .comments .header-comments{
+    position: relative;
+    font-size: 29px;
+  }
+  .movie-details .comments .fas {
+    margin-left: 10px;
+  }
+  .movie-details .comments .btn-addcomment{
+    display: none;
+  }
+  .movie-details .comments #delete-form{
+    display: inline;
+  }
+  .movie-details .comments .btn-addcomment-mobile{
+    background-color: #4682B4;
+    width: 100%;
+    border: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .movie-details .comments .btn-addcomment-mobile:hover{
+    background-color: #2471a3;
+  }
 
 /*---------- add comment and edit comment ---------*/
 .add-comment{
@@ -659,8 +686,8 @@
   padding-left: 30px;
   padding-right: 22px;
   position: relative;
-  top: 50px;
-  left: 17px;
+  bottom: 100px;
+  left: 200px;
 }
 .showtime .reviews:hover{
   background-color: #2471a3;
@@ -669,7 +696,7 @@
   background-color: #28282B;
 }
 .showtime .details{
-  position: absolute;
+  position: relative;
   border: solid 3px #333;
   color: #ffff;
   background-color: #333;
@@ -680,21 +707,55 @@
   padding-bottom: 15px;
   padding-left: 30px;
   padding-right: 30px;
-  left: 225px;
-  bottom: 330px;
+  bottom: 20px;
+  left: 15px;
+
 }
 .showtime .showtime-content h4{
-  margin-top: 50px;
-  margin-left: 170px;
+  margin-top: 0px;
+
 }
 .showtime .showtime-content nav label{
   position: relative;
   background-color: #fff;
   color: #333;
-  padding-left: 15px;
-  padding-right: 15px;
   margin-bottom: 20px;
 }
+
+.showtime .showtime-content .time button{
+    background-color: #4682B4;
+    color: white;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 2px;
+    margin-bottom: 10px;
+    margin-left: 2px;
+    margin-top: 10px;
+}
+.showtime .showtime-content .body-location p{
+  text-align: center;
+}
+.showtime .showtime-content .body-theater span{
+  margin-left: 50px;
+}
+.showtime .comments{
+  margin-bottom: 100px;
+}
+.showtime .comments .btn-addcomment{
+  display: none;
+}
+.showtime .comments .btn-addcomment-mobile{
+  background-color: #4682B4;
+  width: 100%;
+  border: none;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.showtime .comments .btn-addcomment-mobile:hover{
+  background-color: #2471a3;
+}
+
   /*----- cinema page --------*/
   .header-cinema{
     margin-top: 50px;
@@ -707,7 +768,11 @@
     width: 400px;
     padding-left: 20px;
   }
-
+  .cinema-page .content img{
+    width: 150px;
+    height: 150px;
+  }
+  
   /*----------- my page ------------*/
   .profile-page{
       padding-top: 25px;
@@ -827,6 +892,191 @@
   display: none;
 }
 
+ /* ---------------- above select seat ----------*/
+ .background{
+  background-color: #dedede;
+  color: #333;
+  height: 300px;
+  font-family: 'Poppins';
+  border-radius: 8px;
+  margin-right: 20px;
+  position: relative; 
+  padding-left: 50px;
+  margin-top: 30px;
+  right: 30px;
+  z-index: 1;
+}
+.background .content-selectseat{
+  margin-top: 50px;
+}
+.background .content-selectseat h4{
+  font-size: 18px;
+}
+.img-selectseat img{
+  margin-left: 20px;
+  width: 180px;
+  height: 300px;
+  border-radius: 10px;
+  position: absolute;
+  top: 50px;
+  z-index: 9;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
+/*--------------- select seat -------------*/
+
+.select-seat{
+  background-color: #28282B;
+  color: white;
+  width: 100%;
+  margin-top: 50px;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.img-selectseat .container {
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+.img-selectseat .screen{
+  background: #ffffff;
+  height: 100px;
+  width: 100%;
+  margin: 0.8rem 0;
+  transform: rotateX(-45deg);
+  box-shadow: 0 3px 10px rgba(255, 255, 255, 0.8);
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+.img-selectseat .row {
+  display: flex;
+  justify-content: center;
+}
+
+.img-selectseat .seat {
+  background-color: #444451;
+  height: 25px;
+  width: 30px;
+  margin: 4px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.img-selectseat .seat.selected{
+  background-color: #5F9EA0;
+}
+.img-selectseat .seat.sold{
+  background-color: #fff;
+}
+
+.showcase {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+.showcase li small {
+  margin-left: 2px;
+}
+
+.seat.occupied {
+  background-color: #fff;
+}
+
+.seat:nth-of-type(2) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 18px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+/*--------------- reserve ---------------*/
+.ticket-selectseat{
+  font-family: 'poppins';
+  margin-top: 20px;
+  background-color: #dedede;
+  border-radius: 8px;
+  padding: 20px;
+}
+.ticket-selectseat button{
+  background-color: #4682B4;
+  padding: 10px 165px;
+  margin-top: 20px;
+  border: none;
+}
+.ticket-selectseat button:hover{
+  background-color: #2471a3;
+}
+
+/*------------- each location ---------------*/
+.each-location{
+  font-family: 'poppins';
+}
+.each-location .head-logo{
+  text-align: center;
+  font-size: 30px;
+}
+.each-location .logo {
+  width: 300px;
+  height: 300px;
+  margin-left: 70px;
+}
+.each-location .fas{
+  margin-right: 10px;
+}
+.each-location .location{
+  margin-top: 50px;
+  background-color: #dedede;
+  border-radius: 8px;
+  margin-left: 20px;
+  padding: 20px;
+  margin-right: 20px;
+}
+
+.each-location .swiper-container{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.each-location .theater{
+  margin-top: 20px;
+  font-size: 15px;
+  text-align: center;
+}
+.each-location .swiper-container button{
+  background-color: #4682B4;
+  border: none;
+  padding: 10px 50px;
+  margin-top: 20px;
+}
+.each-location .swiper-container button:hover{
+  background-color: #2471a3;
+}
+.each-location .swiper-container img {
+  height: 500px;
+  width: 350px;
+  border-radius: 8px;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
+}
+
 }
 @media screen and (min-width: 720px){
 
@@ -846,18 +1096,18 @@
   }
   
   .loginas-mobile .edit-profile-mobile {
-    left: 100px;
+    left: -150px;
   }
   .loginas-mobile .border-img{
-    left: 130px;
+    left: -130px;
   }
   .loginas-mobile-content .logout-mobile{
     position: relative;
-    left: 100px;
+    left: 150px;
   }
   .loginas-mobile-content span{
     position: relative;
-    left: 80px;
+    left: 120px;
   }
   /*----- movies page --------*/
   .movies{
@@ -872,7 +1122,63 @@
   /*-------- movie showtime ---------*/
 
   .progess-bar{
-    display: block;
+    display: none;
+  }
+  .showtime .poster img{
+    width: 230px;
+    height: 350px;
+  }
+  .showtime h4{
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  .showtime .info-movie{
+    display: none;
+  }
+  .showtime .reviews {
+    padding-top: 5px;
+    padding-bottom: 15px;
+    padding-left: 60px;
+    padding-right: 60px;
+    bottom: 200px;
+    left: 270px;
+  }
+
+  .showtime .details{
+    padding-top: 5px;
+    padding-bottom: 15px;
+    padding-left: 60px;
+    padding-right: 60px;
+    bottom: 250px;
+    left: 270px;
+  
+  }
+  .showtime .showtime-content{
+    position: relative;
+    bottom: 100px;
+  }
+  .showtime .showtime-content nav label{
+    position: relative;
+    margin: 0;
+    background-color: #fff;
+    color: #333;
+  }
+  .showtime .showtime-content nav{
+    padding-left: 00px;
+  }
+  .showtime .showtime-content .body-location p{
+    padding-right: 50px;
+  }
+  .showtime .comments{
+    position: relative;
+    bottom: 100px;
+    margin-bottom: 0px;
+  }
+  .showtime .comments .btn-comments{
+    background-color: #4682B4;
+    padding: 10px 140px;
+    margin-top: 20px;
+    border: none;
   }
 
   /* ------- movie details ---------- */
@@ -1060,12 +1366,146 @@
   margin-bottom: 80px;
 }
 
+/*----------- select seat ----------*/
+
+/* ---------------- above select seat ----------*/
+.background{
+  right: 50px;
+  
+}
+.background .content-selectseat{
+  margin-top: 50px;
+}
+.background .content-selectseat h4{
+  font-size: 18px;
+
+}
+.img-selectseat img{
+  margin-left: 20px;
+  width: 220px;
+  height: 340px;
+
+}
 
 
+/*--------------- select seat -------------*/
+.select-seat{
+
+  margin-top: 50px;
+  padding: 30px;
+  border-radius: 8px;
+}
+.img-selectseat .seat {
+  height: 25px;
+  width: 30px;
+  margin: 4px;
+
+}
+
+.showcase {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+.showcase li small {
+  margin-left: 2px;
+}
+
+.seat.occupied {
+  background-color: #fff;
+}
+
+.seat:nth-of-type(2) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 18px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+/*--------------- reserve ---------------*/
+.ticket-selectseat{
+  font-family: 'poppins';
+  margin-top: 20px;
+  background-color: #dedede;
+  border-radius: 8px;
+  padding: 20px;
+}
+.ticket-selectseat button{
+  background-color: #4682B4;
+  padding: 10px 165px;
+  margin-left: 100px;
+
+  border: none;
+}
+.ticket-selectseat button:hover{
+  background-color: #2471a3;
+}
+/*------------- each location ---------------*/
+
+.each-location .head-logo{
+  text-align: center;
+  font-size: 30px;
+}
+.each-location .logo {
+  width: 300px;
+  height: 300px;
+  margin-left: 70px;
+}
+.each-location .fas{
+  margin-right: 10px;
+}
+.each-location .location{
+  margin-top: 50px;
+  background-color: #dedede;
+  border-radius: 8px;
+  margin-left: 20px;
+  padding: 20px;
+  margin-right: 20px;
+  width: 100%;
+}
+
+.each-location .swiper-container{
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.each-location .theater{
+  margin-top: 20px;
+  font-size: 15px;
+  text-align: center;
+}
+.each-location .swiper-container button{
+  background-color: #4682B4;
+  border: none;
+  padding: 10px 50px;
+  margin-top: 20px;
+}
 
 
 
 }
+
+
+
 @media screen and (min-width: 900px){
   /*----- home page --------*/
   .nav-home .search-movie{
@@ -1093,6 +1533,85 @@
   /*----- movies page --------*/
 
   /*-------- movie showtime ---------*/
+
+  
+  .showtime .poster img{
+    width: 350px;
+    height: 500px;
+  }
+  .showtime h4{
+    font-size: 30px;
+    
+    margin-bottom: 20px;
+  }
+  .showtime .info-movie{
+    display: none;
+  }
+  .showtime .reviews {
+    padding-top: 5px;
+    padding-bottom: 15px;
+    padding-left: 60px;
+    padding-right: 60px;
+    top: 100px;
+    left: 20px;
+    display: block;
+    margin-top: 50px;
+  }
+
+  .showtime .details{
+    padding-top: 5px;
+    padding-bottom: 15px;
+    padding-left: 60px;
+    padding-right: 60px;
+    top: 330px;
+    left: -330px;
+  
+  }
+
+  .showtime .showtime-content{
+    position: relative;
+    bottom: 600px;
+    left: 380px;
+    right: 0px;
+    
+  }
+  .showtime .showtime-content nav{
+    padding-left: 100px;
+    padding-bottom: 20px;
+  }
+  .showtime .showtime-content nav label{
+    position: relative;
+    background-color: #fff;
+    color: #333;
+    margin: 0;
+    
+  }
+
+  .showtime .showtime-content .body-location p{
+    padding-right: 50px;
+  }
+  .showtime .comments{
+    position: relative;
+    bottom: 650px;
+  }
+  .showtime .comments .btn-addcomment{
+    display: block;
+    width: 30%;
+    float: right;
+    background-color: #4682B4;
+    border: none;
+    margin-top: 20px;
+  }
+  .showtime .comments .btn-addcomment:hover{
+    background-color: #2471a3;
+  }
+  .showtime .comments .btn-addcomment-mobile{
+    display: none;
+  }
+
+
+
+
 
 
   /*---------- movie details ----------*/
@@ -1274,7 +1793,95 @@
     .profile-page .info-profile{
       margin-left: 230px;
     }
-    
+    /* ---------------- above select seat ----------*/
+
+.background{
+  right: 50px;
+}
+.background .content-selectseat{
+  margin-top: 50px;
+}
+.background .content-selectseat h4, .background .content-selectseat h6{
+  font-size: 25px;
+}
+.img-selectseat img{
+  margin-left: 190px;
+  width: 220px;
+  height: 340px;
+}
+
+
+/*--------------- select seat -------------*/
+.select-seat{
+  margin-top: 50px;
+  padding: 50px;
+  border-radius: 8px;
+}
+.img-selectseat .seat {
+  height: 25px;
+  width: 30px;
+  margin: 4px;
+
+}
+
+.showcase {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+.showcase li small {
+  margin-left: 2px;
+}
+
+.seat.occupied {
+  background-color: #fff;
+}
+
+.seat:nth-of-type(2) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 18px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+/*--------------- reserve ---------------*/
+.ticket-selectseat{
+  font-family: 'poppins';
+  margin-top: 50px;
+  background-color: #dedede;
+  border-radius: 8px;
+  padding: 20px;
+}
+.ticket-selectseat button{
+  background-color: #4682B4;
+  padding: 10px 85px;
+  margin-left: 0px;
+  border: none;
+}
+.ticket-selectseat button:hover{
+  background-color: #2471a3;
+}
+
 }
 @media screen and (min-width: 1200px){
   /*----- home page --------*/
@@ -1452,11 +2059,191 @@
  .profile-page .pic-left h4{
    font-size: 20px;
  }
+
+ /*-------- movie showtime ---------*/
+
+.showtime h4{
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+.showtime .info-movie{
+  display: block;
+  text-align: left;
+  padding-left: 50px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.showtime .movie-name{
+ margin-right: 50px;
+}
+.progess-bar {
+  display: block;
+}
+
+.showtime .reviews {
+  padding-top: 5px;
+  padding-bottom: 15px;
+  padding-left: 60px;
+  padding-right: 60px;
+  top: 0px;
+  left: 20px;
+  display: block;
+  margin-top: 20px;
+  margin-left: 8px;
+}
+
+.showtime .details{
+  margin-left: 30px;
+  padding-top: 5px;
+  padding-bottom: 15px;
+  padding-left: 60px;
+  padding-right: 60px;
+  top: 0px;
+  left: 0px;
+
+}
+
+.showtime .showtime-content{
+  position: relative;
+  bottom: 00px;
+  left: 00px;
+  right: 0px;
+  
+}
+.showtime .showtime-content nav{
+  padding-left: 50px;
+  padding-bottom: 20px;
+}
+.showtime .showtime-content nav label{
+  position: relative;
+  background-color: #fff;
+  color: #333;
+  padding: 10px 50px;
+}
+
+.showtime .showtime-content .body-location p{
+  text-align: left;
+}
+.showtime .showtime-content .body-theater .theater{
+  padding-left: 50px;
+}
+.showtime .comments{
+  position: relative;
+  bottom: 0px;
+}
+.showtime .comments .btn-comments{
+  padding: 10px 50px;
+  margin-top: 20px;
+  border: none;
+  position: relative;
+  bottom: 180px;
+  margin-right: 20px;
+  float:right;
+}
+.showtime .showtime-content .time button{
+  padding: 5px 20px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  margin-left: 2px;
+  margin-top: 10px;
+}
+.showtime .showtime-content .mobile{
+  display: none;
+}
+
+.background{
+  right: 100px;
+  height: 400px;
+  margin-bottom: 100px;
+}
+.background .content-selectseat{
+  margin-top: 50px;
+  padding: 50px;
+}
+.background .content-selectseat h4, .background .content-selectseat h6{
+  font-size: 25px;
+}
+.img-selectseat img{
+  margin-left: 190px;
+  width: 350px;
+  height: 500px;
 }
 
 
+/*--------------- select seat -------------*/
+.select-seat{
+  margin-top: 50px;
+  padding: 100px;
+  border-radius: 8px;
+}
+.img-selectseat .seat {
+  height: 25px;
+  width: 30px;
+  margin: 4px;
 
+}
 
+.showcase {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: #777;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+.showcase li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 10px;
+}
+.showcase li small {
+  margin-left: 2px;
+}
 
- /*-------- movie showtime ---------*/
+.seat.occupied {
+  background-color: #fff;
+}
+
+.seat:nth-of-type(2) {
+  margin-right: 18px;
+}
+
+.seat:nth-last-of-type(2) {
+  margin-left: 18px;
+}
+
+.seat:not(.occupied):hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.showcase .seat:not(.occupied):hover {
+  cursor: default;
+  transform: scale(1);
+}
+
+/*--------------- reserve ---------------*/
+.ticket-selectseat{
+  font-family: 'poppins';
+  margin-top: 50px;
+  background-color: #dedede;
+  border-radius: 8px;
+  padding: 20px;
+}
+.ticket-selectseat button{
+  background-color: #4682B4;
+  padding: 10px 150px;
+  margin-left: 0px;
+  border: none;
+}
+.ticket-selectseat button:hover{
+  background-color: #2471a3;
+}
+.each-location .swiper-container button{
+  margin-left: 80px;
+  padding: 10px 50px;
+  margin-top: 20px;
+}
+}
 

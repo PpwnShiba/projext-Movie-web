@@ -45,6 +45,7 @@ router.post('/show/:name', middleware.isLoggedIn, function(req, res){
                             founduser.comments.push(comment);
                             founduser.save();
                             console.log('add comment to movie complete');
+                            req.flash('success', 'Added comment complete');
                             res.redirect('/Movies/Movie-Showtime/'+ foundCollection._id);
                             
                         
@@ -79,6 +80,7 @@ router.put('/edit-comment/:comment_id', middleware.checkCommentOwner, function(r
         if(err){
             res.redirect('back');
         }else{
+            req.flash('success', 'Edited comment complete');
             res.redirect('/Movies/Movie-Showtime/'+req.params.id);
         }
     });
@@ -101,6 +103,7 @@ router.delete('/delete-comment/:comment_id', middleware.checkCommentOwner, funct
                     finduser.comments.pull(req.params.comment_id);
                     finduser.save();
                     console.log('Deleted complete');
+                    req.flash('success', 'Deleted comment complete');
                     res.redirect('/movies/Movie-Showtime/'+req.params.id);
                 }
             });

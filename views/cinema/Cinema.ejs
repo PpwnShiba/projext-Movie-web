@@ -1,4 +1,4 @@
-<%- include('partials/header-nav.ejs') %> 
+<%- include('../partials/header-nav.ejs') %> 
 <div class="cinema-page">
     
         <img width="100%" src="https://images.squarespace-cdn.com/content/v1/57e05e534402434aa0f846c2/1495574792362-HQQTJ679T1KEYD39DEMB/ke17ZwdGBToddI8pDm48kLnfZvQ9iwxKU6eubAUQjId7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z5QPOohDIaIeljMHgDF5CVlOqpeNLcJ80NK65_fV7S1Uf479GMBNBfhHsrrjiU7oVFJ8_wlwITqu6jJqO9L0NwOoT__5iE7svB1u_pQDzoSaA/o-MOVIE-THEATER-facebook.jpg?format=1000w" alt="">
@@ -9,35 +9,36 @@
           <h4 id="menu-bar2" class="menu-cinemabar">
               <ul class="nav justify-content-center">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Search Cinema</a>
+                    <a class="nav-link active" aria-current="page" href="#search">Search Cinema</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="#">All Cinemas</a>
+                    <a class="nav-link" href="#alllocation">All Cinemas</a>
                   </li>
                 </ul>
           </h4>
         </div>
    
-    <div class="content">
+    <div class="content" id="search">
       <form action="/cinemas/search-location" method="POST">
         <input class="search-cinema" type="search" name="search_location" placeholder="  Search Cinema Here . . ." aria-label="Search">
         <button type="submit">
           <i class="fas fa-search fa-2x"></i>
         </button>
       </form>
-      <p class="header">All Location</p>
+      <p class="header" id="alllocation">All Cinemas</p>
       <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-center">
         <% alllocation.forEach(function(locations){ %>
-          <div class="col each-location">
+          <a href="/cinemas/location/<%=locations._id%>">
+            <div class="col each-location">
               <p class="headlocation"><%= locations.location %></p>
               <img src=" <%= locations.logo %>"> 
               <p class="headtheater">all theater <i class="fas fa-caret-down"></i></p>
               <% locations.theater.forEach(function(theater){ %>
                 <p><i class="fas fa-angle-right"></i><%= theater.name %></p>
               <% }); %>
-           
+            
           </div>
-         
+        </a>
           <% }) %>
       </div>
       
@@ -49,4 +50,4 @@
  
   
 
-<%- include('partials/footer.ejs') %> 
+<%- include('../partials/footer.ejs') %> 

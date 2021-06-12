@@ -1,0 +1,50 @@
+<%- include('../partials/header-admin.ejs') %> 
+<div class="cinema-admin">
+    <div class="row g-3 row-cols-1 row-cols-sm-2 row-cols-md-4 justify-content-center">
+        <% var i = 0; %>
+        <% allcinema.forEach(function(cinema){ %>
+        <div class="col eachtheater">
+           <p class="header-location"><%= cinema.location %></p>
+           <p><img src="<%= cinema.logo %>" > </p>
+            <% if(currentUser && currentUser.IsAdmin){ %>
+            <br><a href="/admin/add-theater/<%= cinema._id %>"><button type="button" class="btn btn-primary" >
+                Add theater to this cinema
+            </button></a>
+            <form action="/admin/delete/cinema/<%= cinema._id %>?_method=Delete" method="POST" >
+
+                <button class="btn-danger btn" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>">
+                    Delete this cinema
+                </button>
+                <div class="modal fade" id="deleteModal<%= i %>" tabindex="-1">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Delete <%= cinema.name %> ?</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body" >
+                                Are you sure you want to delete <%= cinema.name %> ?
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" style="margin-top: 20px;" data-bs-dismiss="modal">Cancel</button>                         
+                                <button type="submit" class="btn btn-success">Confirm</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+            <% } %>
+        </div>
+        <% i++}); %>
+
+      </div>
+
+       
+       
+</div>
+
+
+
+
+<%- include('../partials/footer.ejs') %> 

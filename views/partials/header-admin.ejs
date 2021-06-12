@@ -9,6 +9,7 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link rel="stylesheet" type="text/css" href="your_website_domain/css_root/flaticon.css">
     <!--boostrap-->
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/Movies.css">
     <link rel="stylesheet" href="/css/admin.css">
@@ -36,6 +37,10 @@
           <li class="nav-item">
             <a class="nav-link " href="/admin/cinema" tabindex="-1" >Cinemas Page</a>
           </li>
+          
+          <li class="nav-item">
+            <a class="nav-link " href="/logout" tabindex="-1" >Log out</a>
+          </li>
         </ul>
         <form class="d-flex">
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -44,3 +49,40 @@
       </div>
     </div>
   </nav>
+  <!-- Flash -->
+  <% if(error && error.length > 0) { %>
+    <div class='contianer-alert-danger '>
+      <div classs="container p-5">
+        <div role="alert">
+          <div class="img">
+            <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im00NTMuMzMyMDMxIDBoLTM5NC42NjQwNjJjLTMyLjM2MzI4MSAwLTU4LjY2Nzk2OSAyNi4zMDQ2ODgtNTguNjY3OTY5IDU4LjY2Nzk2OXYzOTQuNjY0MDYyYzAgMzIuMzYzMjgxIDI2LjMwNDY4OCA1OC42Njc5NjkgNTguNjY3OTY5IDU4LjY2Nzk2OWgzOTQuNjY0MDYyYzMyLjM2MzI4MSAwIDU4LjY2Nzk2OS0yNi4zMDQ2ODggNTguNjY3OTY5LTU4LjY2Nzk2OXYtMzk0LjY2NDA2MmMwLTMyLjM2MzI4MS0yNi4zMDQ2ODgtNTguNjY3OTY5LTU4LjY2Nzk2OS01OC42Njc5Njl6bTAgMCIgZmlsbD0iI2Y0NDMzNiIvPjxwYXRoIGQ9Im0zNTAuMjczNDM4IDMyMC4xMDU0NjljOC4zMzk4NDMgOC4zNDM3NSA4LjMzOTg0MyAyMS44NDc2NTYgMCAzMC4xNjc5NjktNC4xNjAxNTcgNC4xNjAxNTYtOS42MjEwOTQgNi4yNS0xNS4wODU5MzggNi4yNS01LjQ2MDkzOCAwLTEwLjkyMTg3NS0yLjA4OTg0NC0xNS4wODIwMzEtNi4yNWwtNjQuMTA1NDY5LTY0LjEwOTM3Ni02NC4xMDU0NjkgNjQuMTA5Mzc2Yy00LjE2MDE1NiA0LjE2MDE1Ni05LjYyMTA5MyA2LjI1LTE1LjA4MjAzMSA2LjI1LTUuNDY0ODQ0IDAtMTAuOTI1NzgxLTIuMDg5ODQ0LTE1LjA4NTkzOC02LjI1LTguMzM5ODQzLTguMzIwMzEzLTguMzM5ODQzLTIxLjgyNDIxOSAwLTMwLjE2Nzk2OWw2NC4xMDkzNzYtNjQuMTA1NDY5LTY0LjEwOTM3Ni02NC4xMDU0NjljLTguMzM5ODQzLTguMzQzNzUtOC4zMzk4NDMtMjEuODQ3NjU2IDAtMzAuMTY3OTY5IDguMzQzNzUtOC4zMzk4NDMgMjEuODI0MjE5LTguMzM5ODQzIDMwLjE2Nzk2OSAwbDY0LjEwNTQ2OSA2NC4xMDkzNzYgNjQuMTA1NDY5LTY0LjEwOTM3NmM4LjM0Mzc1LTguMzM5ODQzIDIxLjgyNDIxOS04LjMzOTg0MyAzMC4xNjc5NjkgMCA4LjMzOTg0MyA4LjMyMDMxMyA4LjMzOTg0MyAyMS44MjQyMTkgMCAzMC4xNjc5NjlsLTY0LjEwOTM3NiA2NC4xMDU0Njl6bTAgMCIgZmlsbD0iI2ZhZmFmYSIvPjwvc3ZnPg==" />
+          </div>
+        <div class="alert-content">
+          <div class="alert-body">
+            <h4 class="alert-heading">
+              Oops, Something wasn't right</h4>
+            <p><%= error %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%}%>
+    <% if(success && success.length > 0) { %>
+      <div class='contianer-alert-success '>
+        <div classs="container p-5">
+          <div role="alert">
+            <div class="img">
+              <img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMnB0IiB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgd2lkdGg9IjUxMnB0IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Im01MTIgNTguNjY3OTY5YzAtMzIuMzYzMjgxLTI2LjMwNDY4OC01OC42Njc5NjktNTguNjY3OTY5LTU4LjY2Nzk2OWgtMzk0LjY2NDA2MmMtMzIuMzYzMjgxIDAtNTguNjY3OTY5IDI2LjMwNDY4OC01OC42Njc5NjkgNTguNjY3OTY5djM5NC42NjQwNjJjMCAzMi4zNjMyODEgMjYuMzA0Njg4IDU4LjY2Nzk2OSA1OC42Njc5NjkgNTguNjY3OTY5aDM5NC42NjQwNjJjMzIuMzYzMjgxIDAgNTguNjY3OTY5LTI2LjMwNDY4OCA1OC42Njc5NjktNTguNjY3OTY5em0wIDAiIGZpbGw9IiM0Y2FmNTAiLz48cGF0aCBkPSJtMzg1Ljc1IDE3MS41ODU5MzhjOC4zMzk4NDQgOC4zMzk4NDMgOC4zMzk4NDQgMjEuODIwMzEyIDAgMzAuMTY0MDYybC0xMzguNjY3OTY5IDEzOC42NjQwNjJjLTQuMTYwMTU2IDQuMTYwMTU3LTkuNjIxMDkzIDYuMjUzOTA3LTE1LjA4MjAzMSA2LjI1MzkwN3MtMTAuOTIxODc1LTIuMDkzNzUtMTUuMDgyMDMxLTYuMjUzOTA3bC02OS4zMzIwMzEtNjkuMzMyMDMxYy04LjM0Mzc1LTguMzM5ODQzLTguMzQzNzUtMjEuODI0MjE5IDAtMzAuMTY0MDYyIDguMzM5ODQzLTguMzQzNzUgMjEuODIwMzEyLTguMzQzNzUgMzAuMTY0MDYyIDBsNTQuMjUgNTQuMjUgMTIzLjU4NTkzOC0xMjMuNTgyMDMxYzguMzM5ODQzLTguMzQzNzUgMjEuODIwMzEyLTguMzQzNzUgMzAuMTY0MDYyIDB6bTAgMCIgZmlsbD0iI2ZhZmFmYSIvPjwvc3ZnPg==" />
+            </div>
+          <div class="alert-content">
+            <div class="alert-body">
+              <h4 class="alert-heading">
+              Great success!</h4>
+              <p><%= success %></p>
+            </div>
+          </div>
+        </div>
+      </div>
+     
+    <%}%>
+  </div>

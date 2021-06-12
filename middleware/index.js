@@ -5,24 +5,24 @@ var middlewareObj = {};
 
 middlewareObj.checkCollectionOwner = function(req, res, next){
     //login
-    // if(req.isAuthenticated()){
+    if(req.isAuthenticated()){
         Collection.findById(req.params.id, function(err, found){
             if(err){
                 req.flash('error', 'Collectio not found!!');
                 res.redirect('back');
             }else{
-                // if(found.author.id.equals(req.user._id)){
-                next();
-                console.log('delete completed');
-               
-                // }else{
-                //     res.redirect('back');
-                // }
+                if(found.author.id.equals(req.user._id) || req.user.IsAdmin){
+                    next();
+                }else{
+                    req.flash('error','You do not have permission to do this action');
+                    res.redirect('back');
+                }
             }
         });
-    // }else{ //no login
-    //     res.rendirect('back');
-    // }
+    }else{ //no login
+        req.flash('error', 'You need to sign in first!');
+        res.rendirect('back');
+    }
 }
 
 

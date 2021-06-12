@@ -1,5 +1,5 @@
  /* ---------------- above select seat ----------*/
-.background{
+/* .background{
   background-color: #28282B;
   color: white;
   height: 300px;
@@ -36,12 +36,13 @@
   border-radius: 10px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
 
-}
+} */
 /* ---------------- above select seat ----------*/
-
+/* 
 .select-seat{
   background-color: #28282B;
   color: white;
+  width: 100%;
   margin-top: 50px;
   padding: 100px;
 }
@@ -119,6 +120,5 @@
 .showcase .seat:not(.occupied):hover {
   cursor: default;
   transform: scale(1);
-}
-
+} */
 

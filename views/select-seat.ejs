@@ -23,28 +23,26 @@
           <div class="img-selectseat">
             <div class="container py-5 ">
               <div class="row align-items-center">
-                <div class="col-5">
+                <div class="col">
                   <img src="<%= movie.image %>">
                 </div>
-                <div class="col-5 background">
+                <div class="col background">
                   <div class="content-selectseat">
                     <h4><%= movie.name %></h4>
                 
-                    <h4>date: <%=date %></h4>
-                    <h4>Location : <%= location.location %></h4>
-                    <h4>Theater : <%= nametheater.name %></h4>
+                    <h4><b>date:</b>  <%=date %></h4>
+                    <h4><b>Location :</b> <%= location.location %></h4>
+                    <h4><b>Theater :</b> <%= nametheater.name %></h4>
                     
                     <h6><i class="far fa-clock"></i> <%= movie.time %></h6>
-                    <a href="/movies/movie-details/<%= movie._id %>">
-                      <button class="details" type="button">movie details <i class="fas fa-play-circle fa-2x"></i></button> 
-                    </a> 
+                  
                   </div>
                   
-                </div>
+                </div >
           
                   
                         <div class="row align-items-start">
-                          <div class="col-9">
+                          <div class="col-sm-12 col-md-8 ">
                             <div class="select-seat">
                               <div class="container">
 
@@ -472,7 +470,7 @@
                             </div>
                           </div>
               
-                  <div class="col-3">
+                  <div class="col">
                     <div class="ticket-selectseat">
                       <h1>Reservation</h1>
                       <h3 style="color: gray;">Seat: <span id="seat"></span></h3>
