@@ -24,7 +24,7 @@ router.post('/select-seat/:id_movie', middleware.isLoggedIn,function(req,res){
                 if(err){
                     console.log(err);
                 }else{
-                    Seat.find({}, function(err, found){
+                    Seat.find({date:req.body.select.date}, function(err, found){
                         if(err){
                             console.log(err);
                         }else{
@@ -33,10 +33,9 @@ router.post('/select-seat/:id_movie', middleware.isLoggedIn,function(req,res){
                             res.render('select-seat.ejs',{movie: foundMovie, date: req.body.select.date, time:req.body.select.time, location:foundseat, theater_id:req.body.select.theater, seat_id:found});
                         }
                     });
-                    
+
                 }
-            });
-           
+            }); 
         }
     });
    

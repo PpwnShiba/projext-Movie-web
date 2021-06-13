@@ -166,3 +166,11 @@
 .profile-page .myhistory .body span{
     border: 3px solid #dedede;
 }
+.modal-edit .modal-footer .btn-secondary{
+    color: #fff;
+    background-color: gray;
+}
+.modal-edit .modal-footer .btn-primary{
+    color: #fff;
+    background-color: #2471a3;
+}

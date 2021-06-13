@@ -1,4 +1,15 @@
 <%- include('../partials/header-admin.ejs') %> 
+<% var today = new Date().getDate();%> 
+<% var D2 = new Date().getDate()+1;%> 
+<% var D3 = new Date().getDate()+2;%> 
+<% var D4 = new Date().getDate()+3;%> 
+<% var D5 = new Date().getDate()+4;%> 
+
+<% var month = new Date().toLocaleString('en-US', { month: 'short' })%> 
+<% var year = new Date().getFullYear()%>
+
+
+
 <div class="each-theater">
     <div class="row">
         <div class="theater col-4">
@@ -9,7 +20,8 @@
             <% var i=0; %>
             <% foundcinema.theater.forEach(function(found){ %>
                 <%= found.name %> 
-
+               
+                
                 <form id = 'delete-form' action = '/admin/delete-theater/<%= foundcinema._id %>/<%= found._id %>?_method=DELETE' method='POST'>
                     <button class="btn-danger btn" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>">
                         Delete this theater
@@ -53,10 +65,30 @@
             <form action="/admin/add-theater/<%= foundcinema._id %>" method="post">
                 <div class="form-group">
                     <label  class="form-label">Theater Name</label>
-                    <input type="text" class="form-control" name="addtheater">		
+                    <input type="text" class="form-control" name="addtheater[theater]">		
                 </div>
-            </div>
-          
+                
+                <!-- <div class="form-group">
+                    <br>
+                    <label  class="form-label">Date</label>
+
+                    <input type="radio" value="<%= today %> <%= month %> <%= year %>" class="btn-check" name="addtheater[date]" id="option1" autocomplete="off" checked onclick="check(this.value)">
+                    <label class="btn btn-secondary " for="option1">today</label>
+
+                    <input type="radio"  value="<%= D2 %> <%= month %> <%= year %>"  class="btn-check" name="addtheater[date]" id="option2" autocomplete="off" onclick="check(this.value)">
+                    <label class="btn btn-secondary" for="option2"><%= D2 %> <%= month %> <%= year %></label>
+
+                    <input type="radio" value="<%= D3 %> <%= month %> <%= year %>" class="btn-check" name="addtheater[date]" id="option3" autocomplete="off" onclick="check(this.value)" >
+                    <label class="btn btn-secondary" for="option3"><%= D3 %> <%= month %> <%= year %></label>
+
+                    <input type="radio" value="<%= D4 %> <%= month %> <%= year %>" class="btn-check" name="addtheater[date]" id="option4" autocomplete="off" onclick="check(this.value)">
+                    <label class="btn btn-secondary" for="option4"><%= D4 %> <%= month %> <%= year %></label>
+                    
+                </div> -->
+               
+
+
+
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary">Add New theater</button>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

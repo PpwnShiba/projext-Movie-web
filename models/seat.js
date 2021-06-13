@@ -2,6 +2,8 @@ var mongoose = require('mongoose');
 
 var seatSchema = new mongoose.Schema({
     theater: String,
+    date: String,
+    // time: String,
     seats: {
         type: [String],
         default: [ 

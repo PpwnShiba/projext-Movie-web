@@ -45,7 +45,6 @@ router.get('/', function(req,res){
                     res.render('admin/admin.ejs', {allmovies_now: allMovies, allmovies_comingsoon: allmoviescoming}); 
                 }
             });
-           
         }
     });
 });
@@ -89,23 +88,30 @@ router.get('/add-theater/:id_location', function(req, res){
         if(err){
             console.log(err);
         }else{
-            console.log('Found cinema and add theater plz');  
-            res.render('admin/add-theater.ejs', {foundcinema: foundtheater});
-            
+            seat.find({}, function(err, foundseat){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log('Found cinema and add theater plz');  
+                    res.render('admin/add-theater.ejs', {foundcinema: foundtheater, foundseat: foundseat});
+                }
+            });  
         }
     });
  
 });
+
 router.post('/add-theater/:id_location', function(req, res){
     Theater.findById(req.params.id_location, function(err, foundlocation){
         if(err){
             console.log(err);
         }else{
-            seat.create({theater:req.body.addtheater}, function(err, foundseats){
+            seat.create({theater:req.body.addtheater.theater}, function(err, foundseats){
                 if(err){
                     console.log(err);
                 }else{
-                    foundlocation.theater.push({name:req.body.addtheater, seats:foundseats});
+                    console.log(req.body.addtheater.theater);
+                    foundlocation.theater.push({name:req.body.addtheater.theater, seats:foundseats});
                     foundlocation.save();
                     console.log('Added theater completed');
                     req.flash('success', 'Added theater complete');
