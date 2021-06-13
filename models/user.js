@@ -11,7 +11,7 @@ var UserSchema = new mongoose.Schema({
     myfav:[{
         id:     {
             type: mongoose.Schema.Types.ObjectId,
-            ref: 'Comment'
+            ref: 'Movies'
         },
         name: String
     }],

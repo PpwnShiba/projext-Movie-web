@@ -38,7 +38,6 @@ router.get('/myfav/:id/:name',middleware.isLoggedIn,function(req,res){
                 if(err){
                     console.log(err);
                 }else{
-                
                     founduser.myfav.name = req.params.name;
                     founduser.myfav.push(foundmovie);
                     founduser.save();
