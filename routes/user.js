@@ -147,14 +147,21 @@ router.get('/user/mypage',function(req, res){
                 if(err){
                     console.log(err);
                 }else{
-                    reserve.find({}, function(err, foundreserve){
+                    moviescomingsoon.find({}, function(err, foundmoviecoming){
                         if(err){
                             console.log(err);
                         }else{
-                            console.log(foundCollection);
-                            res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve});
+                            reserve.find({}, function(err, foundreserve){
+                                if(err){
+                                    console.log(err);
+                                }else{
+                                    console.log(foundCollection);
+                                    res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve, foundmoviecoming:foundmoviecoming});
+                                }
+                            });
                         }
                     });
+                    
                    
                 }
             });

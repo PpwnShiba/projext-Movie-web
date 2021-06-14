@@ -10,6 +10,7 @@
             <br><a href="/admin/add-theater/<%= cinema._id %>"><button type="button" class="btn btn-primary" >
                 Add theater to this cinema
             </button></a>
+         
             <form action="/admin/delete/cinema/<%= cinema._id %>?_method=Delete" method="POST" >
 
                 <button class="btn-danger btn" data-bs-toggle="modal" data-bs-target="#deleteModal<%= i %>">

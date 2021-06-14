@@ -74,13 +74,14 @@
                     </div>
                 </div>
             </div>
-
-            <div class="get-ticket-mobile">
-                <button class="btn-showtime">
-                    showtime
-                </button>
-            </div>
-          
+        
+            <a href="/movies/movie-showtime/<%= movie._id %>">
+                <div class="get-ticket-mobile">
+                    <button class="btn-showtime">
+                        showtime
+                    </button>
+                </div>
+            </a>
             <div class="comments">
                 <!-- <a class="btn btn-primary" href = '/movies/<%= movie._id %>/new-comment/comment'>Add new comment</a> -->
                 <span class="header-comments" id="#moviereviews">Movie Reviews<i class="fas fa-comment-alt"></i></span>

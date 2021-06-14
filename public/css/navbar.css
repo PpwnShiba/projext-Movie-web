@@ -436,12 +436,14 @@
     width: 50px;
     margin-left: 10px;
   }
-  .header .btn-secondary{
+  .header .btn-now{
     font-family: 'poppins';
     font-size: 20px;
     margin-bottom: 10px;
     padding: 10px 50px;
+    color: #999;
   }
+
   /*----- movies page --------*/
 
   .header-movies-page .body{

@@ -70,7 +70,7 @@ router.get('/now-showing/sort-by-genre', function(req,res){
         }
     }).sort({'genre': 1});
 });
-router.get('/now-showing/sort-by-Rating', function(req,res){
+router.get('/now-showing/sort-by-Rating/descending', function(req,res){
     movies.find({}, function(err, allMovies){
         if(err){
             console.log(err);
@@ -80,7 +80,16 @@ router.get('/now-showing/sort-by-Rating', function(req,res){
         }
     }).sort({'score': -1});
 });
-
+router.get('/now-showing/sort-by-Rating/ascending', function(req,res){
+    movies.find({}, function(err, allMovies){
+        if(err){
+            console.log(err);
+        }else{
+            console.log('Sort by Averate rating');
+            res.render('Now-showing.ejs', {allmovies_now: allMovies}); 
+        }
+    }).sort({'score': 1});
+});
 
 
 router.get("/Movie-Showtime/:id", function(req, res){
@@ -154,14 +163,21 @@ router.get('/Movie-showtime/user/mypage', function(req, res){
                 if(err){
                     console.log(err);
                 }else{
-                    reserve.find({}, function(err, foundreserve){
+                    moviesComingsoon.find({}, function(err, foundmoviecoming){
                         if(err){
                             console.log(err);
                         }else{
-                            console.log(foundCollection);
-                            res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve});
+                            reserve.find({}, function(err, foundreserve){
+                                if(err){
+                                    console.log(err);
+                                }else{
+                                    console.log(foundCollection);
+                                    res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve, foundmoviecoming:foundmoviecoming});
+                                }
+                            });
                         }
                     });
+                    
                    
                 }
             });
@@ -180,14 +196,21 @@ router.get('/user/mypage', function(req,res){
                 if(err){
                     console.log(err);
                 }else{
-                    reserve.find({}, function(err, foundreserve){
+                    moviesComingsoon.find({}, function(err, foundmoviecoming){
                         if(err){
                             console.log(err);
                         }else{
-                            console.log(foundCollection);
-                            res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve});
+                            reserve.find({}, function(err, foundreserve){
+                                if(err){
+                                    console.log(err);
+                                }else{
+                                    console.log(foundCollection);
+                                    res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve, foundmoviecoming:foundmoviecoming});
+                                }
+                            });
                         }
                     });
+                    
                    
                 }
             });
@@ -206,14 +229,21 @@ router.get('/reserve/select-seat/user/mypage', function(req, res){
                 if(err){
                     console.log(err);
                 }else{
-                    reserve.find({}, function(err, foundreserve){
+                    moviesComingsoon.find({}, function(err, foundmoviecoming){
                         if(err){
                             console.log(err);
                         }else{
-                            console.log(foundCollection);
-                            res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve});
+                            reserve.find({}, function(err, foundreserve){
+                                if(err){
+                                    console.log(err);
+                                }else{
+                                    console.log(foundCollection);
+                                    res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve, foundmoviecoming:foundmoviecoming});
+                                }
+                            });
                         }
                     });
+                    
                    
                 }
             });
@@ -232,14 +262,21 @@ router.get('/movie-details/comingsoon/user/mypage', function(req, res){
                 if(err){
                     console.log(err);
                 }else{
-                    reserve.find({}, function(err, foundreserve){
+                    moviesComingsoon.find({}, function(err, foundmoviecoming){
                         if(err){
                             console.log(err);
                         }else{
-                            console.log(foundCollection);
-                            res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve});
+                            reserve.find({}, function(err, foundreserve){
+                                if(err){
+                                    console.log(err);
+                                }else{
+                                    console.log(foundCollection);
+                                    res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve, foundmoviecoming:foundmoviecoming});
+                                }
+                            });
                         }
                     });
+                    
                    
                 }
             });
@@ -247,6 +284,39 @@ router.get('/movie-details/comingsoon/user/mypage', function(req, res){
         }
     });
 });
+router.get('/movie-details/user/mypage', function(req, res){
+    User.findById(req.user._id).populate('comments').populate('myfav').exec(function(err, foundCollection){
+        if(err){
+            console.log(err);
+            res.redirect('/');
+        } else {
+            movies.find({}, function(err, foundmovie){
+                if(err){
+                    console.log(err);
+                }else{
+                    moviesComingsoon.find({}, function(err, foundmoviecoming){
+                        if(err){
+                            console.log(err);
+                        }else{
+                            reserve.find({}, function(err, foundreserve){
+                                if(err){
+                                    console.log(err);
+                                }else{
+                                    console.log(foundCollection);
+                                    res.render('mypage.ejs', {founduser:foundCollection, foundmovie:foundmovie, foundreserve:foundreserve, foundmoviecoming:foundmoviecoming});
+                                }
+                            });
+                        }
+                    });
+                    
+                   
+                }
+            });
+            
+        }
+    });
+});
+
 
 
 module.exports = router;

@@ -39,19 +39,22 @@
                                 
                                   <p><strong> - <%= fav.name %> -</strong></p>  
                                     <!-- <strong> - <%= fav._id %></strong> -->
-                                  
+                                    <% var i = 0; %>
                                 <% foundmovie.forEach(function(foundmovie){ %>
                                   
                                     <% if(String(foundmovie._id) === String(fav._id)){ %>
-                                      <p><img src="<%= foundmovie.image %>"></p>
+                                     
+                                      <p><a href="/movies/movie-details/<%= foundmovie._id %>"><img src="<%= foundmovie.image %>"></a></p>
                                       <form id = 'delete-form' action = '/user/delete-favorite/<%= fav._id %>?_method=DELETE' method='POST'>
-                                          <button type='submit' class="btn btn-danger">Remove from favorite</button>
+
+                                        <button type='submit' class="btn btn-danger">Remove from favorite</button>
+                                            
                                       </form>
-                                    <% } %>
+                                    <% i++} %>
                                 <% }); %>
                                 <% foundmoviecoming.forEach(function(coming){ %>
                                   <% if(String(coming._id) === String(fav._id)){ %>
-                                    <p><img src="<%= coming.image %>"></p>
+                                    <p><a href="/movies/movie-details/comingsoon/<%= coming._id %>"><img src="<%= coming.image %>"></a></p>
                                     <form id = 'delete-form' action = '/user/delete-favorite/<%= fav._id %>?_method=DELETE' method='POST'>
                                         <button type='submit' class="btn btn-danger">Remove from favorite</button>
                                     </form>
@@ -78,7 +81,7 @@
                             <% foundmovie.forEach(function(foundmovie){ %>
                                 <% if(String(foundmovie._id) === String(comment.movie.id) ){ %>
                                     <p><%= foundmovie.name %></p>
-                                    <p><img src="<%= foundmovie.image %>" ></p>
+                                    <p><a href="/movies/movie-details/<%= foundmovie._id %>"><img src="<%= foundmovie.image %>" ></a></p>
                                     <p> <strong><%= comment.author.username %></strong> - <%= comment.text %>  </p> 
                                     <p><a href="/movies/<%= foundmovie._id %>/new-comment/<%= comment._id %>/edit-commet"><button class="btn btn-warning" type="button">Edit comment</button></a></p>
                                     <form id = 'delete-form' action = '/movies/<%= foundmovie._id %>/new-comment/delete-comment/<%= comment._id %>?_method=DELETE' method='POST'>
@@ -163,10 +166,12 @@
       </div>
       <form action="/user/edit-picture" method="post" enctype="multipart/form-data">
       <div class="modal-body">
+        
         <div class="form-group">
           <label style="color: #333;" class="form-label">Choose your Picture</label>
           <input type="file" class="form-control" name='picture_profile' accept="image/*">
-          </div>
+        </div>
+     
       </div>
    
       <div class="modal-footer">
@@ -177,6 +182,7 @@
     </div>
   </div>
 </div>
+
 
 
 
