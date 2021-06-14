@@ -24,7 +24,7 @@ router.post('/select-seat/:id_movie', middleware.isLoggedIn,function(req,res){
                 if(err){
                     console.log(err);
                 }else{
-                    Seat.find({date:req.body.select.date}, function(err, found){
+                    Seat.find({}, function(err, found){
                         if(err){
                             console.log(err);
                         }else{
